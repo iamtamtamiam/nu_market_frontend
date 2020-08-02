@@ -7,7 +7,8 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware, compose, combineReducers} from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import usersReducer from './reducers/user'
+import usersReducer from './reducers/userReducer'
+import loginForm from './reducers/loginFormReducer'
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -18,7 +19,8 @@ import usersReducer from './reducers/user'
 
 
 const reducer = combineReducers({
-  users: usersReducer
+  users: usersReducer,
+  loginForm
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

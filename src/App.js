@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 //import { render } from '@testing-library/react';
-
+import LoginForm from './components/LoginForm'
 
 
 
@@ -41,6 +41,7 @@ class App extends React.Component{
             <p>
               inside scr/app.js
             </p>
+            <LoginForm/>
         </div>
       );
 
