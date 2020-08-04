@@ -3,7 +3,8 @@ import logo from './logo.svg';
 import './App.css';
 //import { render } from '@testing-library/react';
 import LoginForm from './components/LoginForm'
-
+import {connect} from 'react-redux';
+import {getCurrentUser} from "./actions/userActions"
 
 
 // function App() {
@@ -27,12 +28,9 @@ import LoginForm from './components/LoginForm'
 //   );
 // }
 
-
 class App extends React.Component{
   componentDidMount(){
-    fetch("http://localhost:3000/users")
-      .then(resp => resp.json())
-      .then(console.log)
+    this.props.getCurrentUser()
   }
   render(){
     return (
@@ -50,4 +48,6 @@ class App extends React.Component{
 
 }
 
-export default App;
+
+//export default App;
+export default connect(null, {getCurrentUser})(App)
