@@ -6,15 +6,24 @@ export const setCurrentUser = userJson => {
 
 }
 
+export const clearCurrentUser = () => {
+    return {
+        type: "CLEAR_CURRENT_USER"
+    }
+
+}
+
 
 export const login = (loginData) => {
     //make sure to set loginData object
     console.log("login data is", loginData)
     return (dispatch) => {
         dispatch({type: 'LOGIN'})
-        return fetch('http://localhost:3000/login', {
+        return fetch('http://localhost:3001/login', {
+            credentials: "include",
             method: "POST",
             headers: {
+                
                 "Content-Type": "application/json",
                 "Accept": "application/json" 
             },
@@ -38,9 +47,11 @@ export const login = (loginData) => {
 
 export const getCurrentUser = () => {
     return dispatch => {
-        return fetch('http://localhost:3000/get_current_user', {
+        return fetch('http://localhost:3001/get_current_user', {
+            credentials: "include",    
             method: "GET",
             headers: {
+                
                 "Content-Type": "application/json",
                 "Accept": "application/json" 
             },
@@ -49,8 +60,8 @@ export const getCurrentUser = () => {
         .then(resp => resp.json())
         .then(userJson => {
             console.log(userJson)
-            if (userJson.status){
-                alert(userJson.status)
+            if (userJson.error){
+                alert(userJson.error)
             }
             else {
                 dispatch(setCurrentUser(userJson))
@@ -62,6 +73,21 @@ export const getCurrentUser = () => {
     }
 
 
+}
 
+export const logout = () => {
+    return dispatch => {
+        dispatch(clearCurrentUser()) //clearing right up front
+        return fetch('http://localhost:3001/logout', {
+            credentials: "include",    
+            method: "POST",
+            headers: {
+                
+                "Content-Type": "application/json",
+                "Accept": "application/json" 
+            },
+
+        })
+    }
 
 }

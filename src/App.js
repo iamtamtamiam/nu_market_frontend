@@ -5,6 +5,7 @@ import './App.css';
 import LoginForm from './components/LoginForm'
 import {connect} from 'react-redux';
 import {getCurrentUser} from "./actions/userActions"
+import LogOut from "./components/LogOut"
 
 
 // function App() {
@@ -34,13 +35,16 @@ class App extends React.Component{
   }
   render(){
     return (
+      
         <div>
+          {this.props.currentUser ? <LogOut/> : <LoginForm/>}
             <img src={logo} className="App-logo" alt="logo" />
             <p>
               inside scr/app.js
             </p>
-            <LoginForm/>
+  
         </div>
+       
       );
 
 
@@ -48,6 +52,15 @@ class App extends React.Component{
 
 }
 
+//need state to get the current user in state
+//MAY NEED TO FIX!!!!
+//user: state.currentUser
+const mapStateToProps = state => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
 
 //export default App;
-export default connect(null, {getCurrentUser})(App)
+export default connect(mapStateToProps, {getCurrentUser})(App)

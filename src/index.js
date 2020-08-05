@@ -19,7 +19,8 @@ import loginForm from './reducers/loginFormReducer'
 
 
 const reducer = combineReducers({
-  users: usersReducer,
+  //users: usersReducer,
+  currentUser: usersReducer,
   loginForm
 })
 
