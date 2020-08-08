@@ -18,6 +18,7 @@ export const login = (loginData) => {
     //make sure to set loginData object
     console.log("login data is", loginData)
     return (dispatch) => {
+        //can take out next line?
         dispatch({type: 'LOGIN'})
         return fetch('http://localhost:3001/login', {
             credentials: "include",
@@ -36,7 +37,7 @@ export const login = (loginData) => {
                 alert(userJson.status)
             }
             else {
-                dispatch(setCurrentUser(userJson))
+                dispatch(setCurrentUser(userJson.data))
             }
         })
         .catch(console.log())
@@ -64,7 +65,7 @@ export const getCurrentUser = () => {
                 alert(userJson.error)
             }
             else {
-                dispatch(setCurrentUser(userJson))
+                dispatch(setCurrentUser(userJson.data))
             }
         })
         .catch(console.log())
@@ -86,8 +87,12 @@ export const logout = () => {
                 "Content-Type": "application/json",
                 "Accept": "application/json" 
             },
+            
 
-        })
+        }).then(resp => resp.json())
+        .then(userJson => {
+        console.log(userJson)})
+        
     }
 
 }

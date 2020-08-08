@@ -2,10 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 //import { render } from '@testing-library/react';
-import LoginForm from './components/LoginForm'
+
 import {connect} from 'react-redux';
 import {getCurrentUser} from "./actions/userActions"
-import LogOut from "./components/LogOut"
+import NavBar from "./containers/NavBar"
+
 
 
 // function App() {
@@ -37,7 +38,8 @@ class App extends React.Component{
     return (
       
         <div>
-          {this.props.currentUser ? <LogOut/> : <LoginForm/>}
+          {/*this.props.currentUser ? <LogOut/> : <LoginForm/>*/}
+          <NavBar/>
             <img src={logo} className="App-logo" alt="logo" />
             <p>
               inside scr/app.js
@@ -55,12 +57,8 @@ class App extends React.Component{
 //need state to get the current user in state
 //MAY NEED TO FIX!!!!
 //user: state.currentUser
-const mapStateToProps = state => {
-  return {
-    currentUser: state.currentUser
-  }
-}
+
 
 
 //export default App;
-export default connect(mapStateToProps, {getCurrentUser})(App)
+export default connect(null, {getCurrentUser})(App)
