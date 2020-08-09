@@ -14,7 +14,7 @@ const NavBar = ({ currentUser }) => {
     
             {currentUser ? `welcome, ${currentUser.attributes.username}` : "not logged in"}
             
-            {console.log(currentUser.attributes)}
+            {console.log(currentUser)}
             {currentUser ? <LogOut/> : <LoginForm/>}
         </div>
 

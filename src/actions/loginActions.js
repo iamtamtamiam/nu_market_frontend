@@ -5,3 +5,11 @@ export const fillLoginForm = (loginData) => {
     }
 
 }
+
+export const resetingLoginForm = () => {
+    return {
+        type: "RESET_LOGIN_FORM",
+        
+    }
+
+}

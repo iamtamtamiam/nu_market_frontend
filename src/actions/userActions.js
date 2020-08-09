@@ -1,3 +1,5 @@
+import {resetingLoginForm} from "./loginActions"
+
 export const setCurrentUser = userJson => {
     return {
         type: "SET_CURRENT_USER",
@@ -38,6 +40,7 @@ export const login = (loginData) => {
             }
             else {
                 dispatch(setCurrentUser(userJson.data))
+                dispatch(resetingLoginForm())
             }
         })
         .catch(console.log())
