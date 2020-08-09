@@ -6,6 +6,8 @@ import './App.css';
 import {connect} from 'react-redux';
 import {getCurrentUser} from "./actions/userActions"
 import NavBar from "./containers/NavBar"
+import AllListings from "./containers/AllListings"
+
 
 
 
@@ -44,6 +46,7 @@ class App extends React.Component{
             <p>
               inside scr/app.js
             </p>
+          <AllListings/>
   
         </div>
        

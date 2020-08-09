@@ -9,6 +9,7 @@ import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
 import usersReducer from './reducers/userReducer'
 import loginForm from './reducers/loginFormReducer'
+import listingsReducer from './reducers/listingsReducer'
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -21,7 +22,9 @@ import loginForm from './reducers/loginFormReducer'
 const reducer = combineReducers({
   //users: usersReducer,
   currentUser: usersReducer,
-  loginForm
+  loginForm,
+  listings: listingsReducer
+
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
