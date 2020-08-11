@@ -21,11 +21,14 @@ const Listing = (props) => {
 
 
     const listingAttributes = () => {
-        let attributes = props.listing.attributes
-        console.log(attributes)
-        for (const [key, value] of Object.entries(attributes)) {
-           return (`${key}: ${value}`);
+        let attributesObj = props.listing.attributes
+        console.log(attributesObj)
+        let attributesArray = []
+        for (const [key, value] of Object.entries(attributesObj)) {
+           //return (`${key}: ${value}`);
+           attributesArray.push(<li>{key}: {value}</li>)
           }
+        return attributesArray
     
     }
 
@@ -33,9 +36,9 @@ const Listing = (props) => {
     return (
         <div>
             this will be an indiviudal listing
-            <li>
+            <ul>
             {listingAttributes()}
-            </li>
+            </ul>
 
         </div>
 
