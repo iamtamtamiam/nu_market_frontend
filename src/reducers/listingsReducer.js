@@ -3,9 +3,9 @@ export default (state = [], action) => {
         case "SET_ALL_LISTINGS":
             console.log("in listingsReducer", action.json)
             return action.json
-        case "CLEAR_CURRENT_USER":
-            //return state
-            return null
+        //case "CLEAR_CURRENT_USER":
+        //    //return state
+        //    return []
 
         default: 
             return state

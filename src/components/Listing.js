@@ -22,7 +22,7 @@ const Listing = (props) => {
 
     const listingAttributes = () => {
         let attributesObj = props.listing.attributes
-        console.log(attributesObj)
+        //console.log(attributesObj)
         let attributesArray = []
         for (const [key, value] of Object.entries(attributesObj)) {
            //return (`${key}: ${value}`);
