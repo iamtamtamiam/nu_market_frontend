@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import usersReducer from './reducers/userReducer'
 import loginForm from './reducers/loginFormReducer'
 import listingsReducer from './reducers/listingsReducer'
+import {BrowserRouter as Router} from 'react-router-dom'
 
 // ReactDOM.render(
 //   <React.StrictMode>
@@ -33,7 +34,9 @@ const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk)))
 
 ReactDOM.render (
   <Provider store={store}>
-    <App/>
+    <Router>
+      <App/>
+    </Router>
   </Provider>,
   document.getElementById('root')
 

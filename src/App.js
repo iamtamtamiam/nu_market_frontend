@@ -6,8 +6,10 @@ import './App.css';
 import {connect} from 'react-redux';
 import {getCurrentUser} from "./actions/userActions"
 import NavBar from "./containers/NavBar"
-import AllListings from "./containers/AllListings"
+//import AllListings from "./containers/AllListings"
+import Home from "./containers/Home"
 
+import { withRouter, Route, Switch } from 'react-router-dom'
 
 
 
@@ -45,9 +47,13 @@ class App extends React.Component{
           <NavBar/>
             <img src={logo} className="App-logo" alt="logo" />
             <p>
-              inside scr/app.js
+              inside scr/app.js - after navbar
             </p>
-          <AllListings/>
+
+          <Switch>
+            <Route exact path="/" component={Home} />
+            
+          </Switch>
   
         </div>
        
@@ -65,4 +71,4 @@ class App extends React.Component{
 
 
 //export default App;
-export default connect(null, {getCurrentUser})(App)
+export default withRouter(connect(null, {getCurrentUser})(App))

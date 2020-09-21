@@ -32,7 +32,7 @@ const Listing = (props) => {
     
     }
 
-
+//could split up listing attributes here depending on currentuser
     return (
         <div>
             this will be an indiviudal listing
