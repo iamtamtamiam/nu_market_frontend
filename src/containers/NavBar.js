@@ -23,7 +23,7 @@ const NavBar = ({ currentUser }) => {
             <p> in Nav Bar</p>
             {`welcome, ${currentUser.attributes.username}`}
            
-            <Link exact to={`/`}>Home</Link>
+            <Link exact="true" to={`/`}>Home</Link>
 
             <LogOut/>
            

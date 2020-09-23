@@ -10,7 +10,7 @@ import NavBar from "./containers/NavBar"
 import Home from "./containers/Home"
 
 import { withRouter, Route, Switch } from 'react-router-dom'
-import UserListings from './components/UserListings';
+import UserListings from './containers/UserListings';
 import ListingShow from './components/ListingShow'
 
 

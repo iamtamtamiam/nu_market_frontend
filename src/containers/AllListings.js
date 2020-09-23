@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 //connect to Redux and pass the appropriate props down to its children. 
 import { connect } from 'react-redux'
 import {getAllListings} from '../actions/listingsActions'
-import Listing from '../components/Listing'
+import Listing from '../components/ListingCard'
 
 
 class AllListings extends Component {
