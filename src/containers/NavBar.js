@@ -3,22 +3,35 @@ import {connect} from 'react-redux';
 //import {logout} from '../actions/userActions'
 import LoginForm from '../components/LoginForm'
 import LogOut from "../components/LogOut"
-
+import {Link} from 'react-router-dom'
 
 const NavBar = ({ currentUser }) => {
 
-    
+  if (currentUser === "") {
+    return (
+      <div>Please log in to see NavBar
+        <LoginForm/>
+      </div>
+    )
+  } else {
+
+
+    // {currentUser ? `welcome, ${currentUser.attributes.username}` : "not logged in"}
+    //{currentUser ? <LogOut/> : <LoginForm/>}
     return (
         <div>
-            <p> in Nav Bar  the user is,  </p>
-    
-            {currentUser ? `welcome, ${currentUser.attributes.username}` : "not logged in"}
-            
-            {console.log(currentUser)}
-            {currentUser ? <LogOut/> : <LoginForm/>}
+            <p> in Nav Bar</p>
+            {`welcome, ${currentUser.attributes.username}`}
+           
+            <Link exact to={`/`}>Home</Link>
+
+            <LogOut/>
+           
+
         </div>
 
     )
+  }
 
 
 }

@@ -10,6 +10,8 @@ import NavBar from "./containers/NavBar"
 import Home from "./containers/Home"
 
 import { withRouter, Route, Switch } from 'react-router-dom'
+import UserListings from './components/UserListings';
+import ListingShow from './components/ListingShow'
 
 
 
@@ -52,7 +54,8 @@ class App extends React.Component{
 
           <Switch>
             <Route exact path="/" component={Home} />
-            
+            <Route exact path="/users/:id/listings" component={UserListings} />
+            <Route exact path="/listings/:id" component={ListingShow} />
           </Switch>
   
         </div>
@@ -67,6 +70,9 @@ class App extends React.Component{
 //need state to get the current user in state
 //MAY NEED TO FIX!!!!
 //user: state.currentUser
+
+
+
 
 
 
