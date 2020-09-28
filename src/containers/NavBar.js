@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom'
 
 const NavBar = ({ currentUser }) => {
 
-  if (currentUser === "") {
+  if (!currentUser) {
     return (
       <div>Please log in to see NavBar
         <LoginForm/>
@@ -24,6 +24,7 @@ const NavBar = ({ currentUser }) => {
             {`welcome, ${currentUser.attributes.username}`}
            
             <Link exact="true" to={`/`}>Home</Link>
+            <Link exact="true" to={`/users/${currentUser.id}/listings`}>My Listings</Link>
 
             <LogOut/>
            
