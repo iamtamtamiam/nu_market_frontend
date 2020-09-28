@@ -1,15 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {logout} from '../actions/userActions'
+import { withRouter } from 'react-router-dom'
 
-const LogOut = (props) => {
-
+//const LogOut = (props) => {
+const LogOut = ({logout, history}) => {
     
 
     const handleSubmit = event => {
         event.preventDefault()
         //props.login(props.loginForm)
-        props.logout()
+        //props.logout()
+        logout()
+        history.push('/')
     }
 
     return (
@@ -23,4 +26,4 @@ const LogOut = (props) => {
 
 }
 
-export default connect(null, {logout})(LogOut)
+export default withRouter(connect(null, {logout})(LogOut))

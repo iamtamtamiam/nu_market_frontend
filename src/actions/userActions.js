@@ -82,6 +82,8 @@ export const getCurrentUser = () => {
 export const logout = () => {
     return dispatch => {
         dispatch(clearCurrentUser()) //clearing right up front
+        //history.push('/')
+        //console.log(history)
         return fetch('http://localhost:3001/logout', {
             credentials: "include",    
             method: "POST",
@@ -94,7 +96,9 @@ export const logout = () => {
 
         }).then(resp => resp.json())
         .then(userJson => {
-        console.log(userJson)})
+        console.log(userJson)
+        alert(userJson.message)
+        })
         
     }
 
