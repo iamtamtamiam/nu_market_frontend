@@ -55,7 +55,12 @@ class App extends React.Component{
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/users/:id/listings" component={UserListings} />
-            <Route exact path="/listings/:id" component={ListingShow} />
+            <Route exact path="/listings/:id" render={props => {
+              const listingToShow = this.props.listings.find(listing => listing.id === props.match.params.id)
+              console.log(listingToShow)
+              return <ListingShow listingToShow={listingToShow} {...props} />
+            }} />
+
           </Switch>
   
         </div>
@@ -67,14 +72,23 @@ class App extends React.Component{
 
 }
 
+//<Route exact path="/listings/:id" component={ListingShow} />
+
 //need state to get the current user in state
 //MAY NEED TO FIX!!!!
 //user: state.currentUser
 
+const mapStatetoProps = state => {
+  return({
+    currentUser: state.currentUser,
+    listings: state.listings
+  }
+  )
 
+}
 
 
 
 
 //export default App;
-export default withRouter(connect(null, {getCurrentUser})(App))
+export default withRouter(connect(mapStatetoProps, {getCurrentUser})(App))

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 //connect to Redux and pass the appropriate props down to its children. 
 import { connect } from 'react-redux'
 import {getAllListings} from '../actions/listingsActions'
-import Listing from '../components/ListingCard'
+import ListingCard from '../components/ListingCard'
 
 
 class AllListings extends Component {
@@ -15,7 +15,8 @@ class AllListings extends Component {
 
     const listedListings = this.props.listings.map(listing => {
             return (
-                <Listing
+                <ListingCard
+                    currentUser={this.props.currentUser}
                     key={listing.id}
                     listing={listing}
                 />
@@ -41,7 +42,8 @@ class AllListings extends Component {
 //export default RestaurantsContainer
 const mapStateToProps = state => {
   return {
-    listings: state.listings
+    listings: state.listings,
+    currentUser: state.currentUser
   }
 } //needed to set up basic reducer
 

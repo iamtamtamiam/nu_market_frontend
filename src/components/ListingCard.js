@@ -4,7 +4,7 @@ import React from 'react';
 
 import {Link} from 'react-router-dom';
 
-const Listing = (props) => {
+const ListingCard = (props) => {
     console.log(props)
 
     // const listingAttributes = props.listing.attributes.forEach(attribute => {
@@ -37,12 +37,21 @@ const Listing = (props) => {
 
     const listingAttr = props.listing.attributes
 
+    // const handleClick = link => {
+    //     console.log(link)
+    //     if (props.currentUser !== "") {
+    //         return "to={`/listings/${props.listing.id}`}"
+    //     }
+    // }
+
+    //to={`/listings/${props.listing.id}`}
+
 //could split up listing attributes here depending on currentuser
     return (
         <div>
             this will be an indiviudal listing
             <h2>{listingAttr.item}</h2>
-            <Link key={props.listing.id} to={`/listings/${props.listing.id}`}>{listingAttr.item}</Link>
+            <Link key={props.listing.id}  to={`/listings/${props.listing.id}`}>{listingAttr.item}</Link>
             <p>{listingAttr.price} - {listingAttr.condition}</p>
             <p>{listingAttr.zipcode}</p>
             
@@ -54,4 +63,4 @@ const Listing = (props) => {
 
 }
 
-export default Listing
+export default ListingCard

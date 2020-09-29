@@ -4,12 +4,24 @@ import React from 'react';
 
 
 
-const ListingShow = () => {
+const ListingShow = ({listingToShow}) => {
+  
+  console.log(listingToShow)
+
+  const listingAttrs = listingToShow.attributes
+  console.log(listingAttrs)
 
     return (
+      
         <div>
           this is a listings show page
-        </div>
+          <h3>{listingAttrs.item}</h3>
+          <p>{listingAttrs.price} - {listingAttrs.condition} </p>
+          <p>{listingAttrs.description}</p>
+          <p>maybe take off? {listingAttrs.contact}</p>
+          <p>near: {listingAttrs.zipcode}</p>
+          <p>maybe change? {listingAttrs.status}</p>
+        </div> 
       );
 
 }
