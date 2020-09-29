@@ -12,7 +12,7 @@ const ListingShow = ({listingToShow}) => {
   console.log(listingAttrs)
 
     return (
-      
+            
         <div>
           this is a listings show page
           <h3>{listingAttrs.item}</h3>

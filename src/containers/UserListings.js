@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 import UserListingCard from '../components/UserListingCard'
 
@@ -11,14 +13,18 @@ class UserListings extends Component {
         const {currentUser} = this.props
         //const currentUser2 = this.props.currentUser
 
+        const linkToNew = <Link exact="true" to={`/listings/new`}>Add a New Listings</Link>
 
-        {while (currentUser === "") { return "loading"}
+
+        {while (currentUser === "") { return (<div>You have no listings... {linkToNew}</div>)}
 
         const sellerListings = currentUser.attributes.seller_listings
         
+      
 
         return (
             <div>
+                {linkToNew}
                 done loading?
                 inside UserListings
                 {console.log(this.props)}

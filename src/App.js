@@ -12,7 +12,7 @@ import Home from "./containers/Home"
 import { withRouter, Route, Switch } from 'react-router-dom'
 import UserListings from './containers/UserListings';
 import ListingShow from './components/ListingShow'
-
+import ListingForm from './components/ListingForm'
 
 
 
@@ -55,12 +55,16 @@ class App extends React.Component{
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/users/:id/listings" component={UserListings} />
+            
+            <Route exact path="/listings/new" component={ListingForm} />
+
             <Route exact path="/listings/:id" render={props => {
               const listingToShow = this.props.listings.find(listing => listing.id === props.match.params.id)
               console.log(listingToShow)
               return <ListingShow listingToShow={listingToShow} {...props} />
             }} />
 
+            
           </Switch>
   
         </div>
