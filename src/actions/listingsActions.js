@@ -6,6 +6,14 @@ export const setAllListings = json => {
 
 }
 
+export const addListing = json => {
+    return {
+        type: "ADD_LISTING",
+        json
+    }
+
+}
+
 
 export const getAllListings = () => {
 
@@ -29,5 +37,38 @@ export const getAllListings = () => {
 
     }
 
+}
 
+export const createListing = (listingData) => {
+    //make sure to set loginData object
+    console.log("listing data is", listingData)
+    return (dispatch) => {
+        //can take out next line?
+        //dispatch({type: 'LOGIN'})
+        return fetch('http://localhost:3001/listings', {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                
+                "Content-Type": "application/json",
+                "Accept": "application/json" 
+            },
+            body: JSON.stringify(listingData)
+        })
+        .then(resp => resp.json())
+        .then(listingJson => {
+            console.log(listingJson)
+            if (listingJson.status){
+                alert(listingJson.status)
+            }
+            else {
+                console.log("made it here")
+                dispatch(addListing(listingJson.data))
+                //dispatch(resetingLoginForm())
+            }
+        })
+        .catch(console.log())
+
+
+    }
 }
