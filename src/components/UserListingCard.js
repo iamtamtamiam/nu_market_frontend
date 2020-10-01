@@ -21,7 +21,7 @@ const UserListingCard = (props) => {
 
 
       const listingAttributes = () => {
-          let attributesObj = props.listing
+          let attributesObj = props.listingAttr
           //console.log(attributesObj)
           let attributesArray = []
           for (const [key, value] of Object.entries(attributesObj)) {
@@ -33,13 +33,16 @@ const UserListingCard = (props) => {
       }
 
 //could split up listing attributes here depending on currentuser
+
+//FIND BUYER BY NAME? fetch buyers?
     return (
         <div>
             this will be an indiviudal listing of a User
             <ul>
                 {listingAttributes()}
+                Buyer: {props.listingBuyer.data ? props.listingBuyer.data.id : "no buyer" }
             </ul>
-
+           
         </div>
 
     )
