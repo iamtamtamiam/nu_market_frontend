@@ -56,7 +56,7 @@ class App extends React.Component{
             <Route exact path="/" component={Home} />
             <Route exact path="/users/:id/listings" component={UserListings} />
             
-            <Route exact path="/listings/new" component={ListingForm} />
+            <Route exact path="/listings/new" render={({history})=><ListingForm history={history}/>}/>
 
             <Route exact path="/listings/:id" render={props => {
               const listingToShow = this.props.listings.find(listing => listing.id === props.match.params.id)

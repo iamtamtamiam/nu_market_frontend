@@ -39,7 +39,7 @@ export const getAllListings = () => {
 
 }
 
-export const createListing = (listingData) => {
+export const createListing = (listingData, history) => {
     //make sure to set loginData object
     console.log("listing data is", listingData)
     return (dispatch) => {
@@ -65,6 +65,7 @@ export const createListing = (listingData) => {
                 console.log("made it here")
                 dispatch(addListing(listingJson.data))
                 //dispatch(resetingLoginForm())
+                history.push(`/listings/${listingJson.data.id}`)
             }
         })
         .catch(console.log())

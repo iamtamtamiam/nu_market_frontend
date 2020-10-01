@@ -14,7 +14,7 @@ state = {
     zipcode:""
   }
  
-  
+ 
  
   handleInputChange = event => {
     const {name, value} = event.target
@@ -33,7 +33,7 @@ state = {
 handleSubmit = event => {
     event.preventDefault()
     console.log("made it to handle submit!")
-    this.props.createListing(this.state)
+    this.props.createListing(this.state, this.props.history)
 
 }
 
@@ -42,6 +42,9 @@ handleSubmit = event => {
     return (
         <div>
         This is the Listing form!
+
+        {console.log(this.props)}
+  
     
       <form onSubmit={this.handleSubmit}>
 
