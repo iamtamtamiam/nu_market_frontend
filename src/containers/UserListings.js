@@ -37,8 +37,10 @@ class UserListings extends Component {
                 {userListings.map(item =>
                    <UserListingCard
                         key={item.id}
+                        listingId={item.id}
                         listingAttr={item.attributes}
                         listingBuyer={item.relationships.buyer}
+                        listingSeller={item.relationships.seller}
                    />
                 )}
 

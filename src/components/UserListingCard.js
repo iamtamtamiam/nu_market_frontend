@@ -1,6 +1,7 @@
 import React from 'react';
-//import {connect} from 'react-redux';
+import {connect} from 'react-redux';
 //import {logout} from '../actions/userActions'
+import {Link} from 'react-router-dom'
 
 const UserListingCard = (props) => {
     console.log(props)
@@ -41,6 +42,7 @@ const UserListingCard = (props) => {
             <ul>
                 {listingAttributes()}
                 Buyer: {props.listingBuyer.data ? props.listingBuyer.data.id : "no buyer" }
+                {(props.currentUser.id === props.listingSeller.data.id) ? (<Link to={`/listings/${props.listingId}/edit`}>Edit this listing</Link>) : "I am NOT seller" }
             </ul>
            
         </div>
@@ -50,4 +52,11 @@ const UserListingCard = (props) => {
 
 }
 
-export default UserListingCard
+
+const mapStateToProps = ({ currentUser }) => {
+    return {
+      currentUser
+    }
+  }
+
+export default connect(mapStateToProps)(UserListingCard)
