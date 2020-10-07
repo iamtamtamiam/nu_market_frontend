@@ -14,7 +14,8 @@ import UserListings from './containers/UserListings';
 import ListingShow from './components/ListingShow'
 import ListingForm from './components/ListingForm'
 
-
+import ListingEdit from './containers/ListingEdit'
+import ListingNew from './containers/ListingNew';
 
 // function App() {
 //   return (
@@ -56,12 +57,18 @@ class App extends React.Component{
             <Route exact path="/" component={Home} />
             <Route exact path="/users/:id/listings" component={UserListings} />
             
-            <Route exact path="/listings/new" render={({history})=><ListingForm history={history}/>}/>
+            <Route exact path="/listings/new" render={({history})=><ListingNew history={history}/>}/>
 
             <Route exact path="/listings/:id" render={props => {
               const listingToShow = this.props.listings.find(listing => listing.id === props.match.params.id)
               console.log(listingToShow)
               return <ListingShow listingToShow={listingToShow} {...props} />
+            }} />
+
+            <Route exact path="/listings/:id/edit" render={props => {
+              const listingToEdit = this.props.listings.find(listing => listing.id === props.match.params.id)
+              console.log(listingToEdit)
+              return <ListingEdit listingToEdit={listingToEdit} {...props} />
             }} />
 
             

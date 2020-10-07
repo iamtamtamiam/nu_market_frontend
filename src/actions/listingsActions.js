@@ -15,6 +15,13 @@ export const addListing = json => {
 }
 
 
+export const updateListingSuccess = trip => {
+    return {
+      type: "UPDATE_LISTING",
+      trip
+    }
+  }
+
 export const getAllListings = () => {
 
     return dispatch => {
@@ -72,4 +79,40 @@ export const createListing = (listingData, history) => {
 
 
     }
+}
+
+
+export const updateListing = (listingData) => {
+    //make sure to set loginData object
+    console.log("update listing data is", listingData)
+    //debugger
+    return (dispatch) => {
+        debugger
+        return fetch('http://localhost:3001/listings', {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                
+                "Content-Type": "application/json",
+                "Accept": "application/json" 
+            },
+            body: JSON.stringify(listingData)
+        })
+        .then(resp => resp.json())
+        .then(listingJson => {
+            console.log(listingJson)
+            if (listingJson.status){
+                alert(listingJson.status)
+            }
+            else {
+                console.log("made it here")
+                dispatch(updateListingSuccess(listingJson.data))
+                //dispatch(resetingLoginForm())
+                //history.push(`/listings/${listingJson.data.id}`)
+            }
+        })
+        .catch(console.log)
+
+    }
+
 }

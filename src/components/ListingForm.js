@@ -1,11 +1,22 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {createListing} from '../actions/listingsActions'
  
 class ListingForm extends React.Component {
-  
+
+  componentDidMount(){
+    if (this.props.editMode){
+        this.setState({
+            ...this.state,
+            ...this.props.listingToEdit.attributes
+        })
+    }
+
+  }  
+
+
 state = {
-    seller_id: this.props.userID,
+    //item: this.props.listingToEdit ? this.props.listingToEdit.attributes.item : "",
     item: "",
     price: "",
     description:"",
@@ -17,7 +28,7 @@ state = {
  
 baseState = this.state
 
-  
+//seller_id: this.props.userID,
   
  
   handleInputChange = event => {
@@ -34,14 +45,21 @@ baseState = this.state
     //console.log(this.state)
     }
 
-handleSubmit = event => {
-    event.preventDefault()
-    console.log("made it to handle submit!")
-    this.props.createListing(this.state, this.props.history)
-    this.setState(this.baseState)
-    
 
-}
+    // handleSubmit = event => {
+    //     event.preventDefault()
+    //     console.log("made it to handle submit!")
+    //     this.props.createListing({...this.state, seller_id: this.props.userID,}, this.props.history)
+    //     this.setState(this.initialState)
+    // }
+
+    valueType = () => {
+        if (this.props.editMode){
+            return this.props.listingToEdit.attributes
+        }
+        else{ return this.state}
+    }
+
 
  
   render() {
@@ -52,26 +70,31 @@ handleSubmit = event => {
         {console.log(this.props)}
         
     
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={event => {
+          event.preventDefault()
+          this.props.handleSubmit(this.state, this.props.userID)
+      }}>
+
+          {console.log(this.valueType())}
 
         <label>Item</label>
-            <input type="text" onChange={event => this.handleInputChange(event)} value={this.state.item} name="item"/>
+            <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().item} name="item"/>
         <label>Price</label>
-            <input type="text" onChange={event => this.handleInputChange(event)} value={this.state.price} name="price" />
+            <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().price} name="price" />
         <label>Description</label>
-            <input type="text" onChange={event => this.handleInputChange(event)} value={this.state.description} name="description"/>
+            <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().description} name="description"/>
         <label>Condition - may want to change!!</label>
-            <input type="text" onChange={event => this.handleInputChange(event)} value={this.state.condition} name="condition"/>
+            <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().condition} name="condition"/>
         <label>Contact - may want to remove!!</label>
-            <input type="text" onChange={event => this.handleInputChange(event)} value={this.state.contact} name="contact"/> 
+            <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().contact} name="contact"/> 
         <label>Zipcode - may want to remove!!</label>
-            <input type="text" onChange={event => this.handleInputChange(event)} value={this.state.zipcode} name="zipcode"/> 
+            <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().zipcode} name="zipcode"/> 
         
         <input type="submit" value="Create New Listing!"></input> 
       </form>
 
       {console.log(this.state)}
-      {console.log(this.baseState)}
+      
 
       </div>
     )

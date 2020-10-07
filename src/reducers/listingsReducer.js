@@ -10,6 +10,9 @@ export default (state = [], action) => {
         //case "CLEAR_CURRENT_USER":
         //    //return state
         //    return []
+        case "UPDATE_TRIP":
+            return state.map(listing => listing.id === action.listing.id ? action.listing : listing)
+
 
         default: 
             return state
