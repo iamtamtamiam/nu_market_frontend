@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import {getAllListings} from '../actions/listingsActions'
 import ListingCard from '../components/ListingCard'
 
+import { Container, CardDeck } from 'react-bootstrap'
 
 class AllListings extends Component {
     
@@ -31,9 +32,11 @@ class AllListings extends Component {
         <RestaurantInput addRestaurant={this.props.addRestaurant}/>
         <Restaurants restaurants={this.props.restaurants} deleteRestaurant={this.props.deleteRestaurant}/>
          */}
-
-        {listedListings}
-          
+        <Container>
+          <CardDeck>
+            {listedListings}
+          </CardDeck>
+        </Container>  
       </div>
     )
   }

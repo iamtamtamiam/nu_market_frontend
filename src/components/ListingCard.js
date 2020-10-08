@@ -4,6 +4,8 @@ import React from 'react';
 
 import {Link} from 'react-router-dom';
 
+import {Card} from 'react-bootstrap'
+
 const ListingCard = (props) => {
     console.log(props)
 
@@ -49,12 +51,18 @@ const ListingCard = (props) => {
 //could split up listing attributes here depending on currentuser
     return (
         <div>
-            this will be an indiviudal listing
-            <h2>{listingAttr.item}</h2>
-            <Link key={props.listing.id}  to={`/listings/${props.listing.id}`}>{listingAttr.item}</Link>
-            <p>{listingAttr.price} - {listingAttr.condition}</p>
-            <p>{listingAttr.zipcode}</p>
-            
+            <Card>
+                <Card.Img variant="top" src="https://images-na.ssl-images-amazon.com/images/I/11JFQo2o59L._SX331_BO1,204,203,200_.jpg" 
+                    style={ {width: '100%', height: '12rem', objectFit: 'cover'} }
+                />
+                <Card.Body>
+                    <Card.Title><Link key={props.listing.id}  to={`/listings/${props.listing.id}`}>{listingAttr.item}</Link></Card.Title>
+                    <Card.Text>
+                        <p>{listingAttr.price} - {listingAttr.condition}</p>
+                        <p>{listingAttr.zipcode}</p>
+                    </Card.Text>
+                </Card.Body>
+            </Card>
 
         </div>
 

@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom'
 
 import UserListingCard from '../components/UserListingCard'
 
+import {Container, CardDeck} from 'react-bootstrap'
+
 class UserListings extends Component {
 
 
@@ -33,16 +35,20 @@ class UserListings extends Component {
                 {/*console.log(sellerListings)*/}\
                 {console.log("this is sellerl", sellerListings)}
                 {console.log("this is user l", userListings)}
-                
-                {userListings.map(item =>
-                   <UserListingCard
-                        key={item.id}
-                        listingId={item.id}
-                        listingAttr={item.attributes}
-                        listingBuyer={item.relationships.buyer}
-                        listingSeller={item.relationships.seller}
-                   />
-                )}
+                <Container>
+                    <CardDeck>
+                        {userListings.map(item =>
+
+                           <UserListingCard
+                                key={item.id}
+                                listingId={item.id}
+                                listingAttr={item.attributes}
+                                listingBuyer={item.relationships.buyer}
+                                listingSeller={item.relationships.seller}
+                           />
+                        )}
+                    </CardDeck>
+                </Container>
 
             </div>
 

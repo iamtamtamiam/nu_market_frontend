@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 //import {logout} from '../actions/userActions'
 import {Link} from 'react-router-dom'
 
+import {Card} from 'react-bootstrap'
+
 const UserListingCard = (props) => {
     console.log(props)
 
@@ -38,12 +40,23 @@ const UserListingCard = (props) => {
 //FIND BUYER BY NAME? fetch buyers?
     return (
         <div>
-            this will be an indiviudal listing of a User
-            <ul>
-                {listingAttributes()}
-                Buyer: {props.listingBuyer.data ? props.listingBuyer.data.id : "no buyer" }
-                {(props.currentUser.id === props.listingSeller.data.id) ? (<Link to={`/listings/${props.listingId}/edit`}>Edit this listing</Link>) : "I am NOT seller" }
-            </ul>
+            <Card>
+                <Card.Img variant="top" src="https://cdn.shopify.com/s/files/1/2440/7149/products/Solid_Blue-Gray_600x.jpg?v=1579880598" 
+                    style={ {width: '100%', height: '12rem', objectFit: 'cover'} }
+                />
+                <Card.Body>
+                    <Card.Title>this will be an indiviudal listing of a User</Card.Title>
+                    <Card.Text>
+                        <ul>
+                            {listingAttributes()}
+                        </ul>
+                    </Card.Text>   
+                </Card.Body>
+                <Card.Footer>
+                    <small className="text-muted">Buyer: {props.listingBuyer.data ? props.listingBuyer.data.id : "no buyer" }</small><br></br>
+                    {(props.currentUser.id === props.listingSeller.data.id) ? (<Link to={`/listings/${props.listingId}/edit`}>Edit this listing</Link>) : "I am NOT seller" }
+                </Card.Footer>
+            </Card>
            
         </div>
 
