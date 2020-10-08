@@ -90,7 +90,7 @@ baseState = this.state
         <label>Zipcode - may want to remove!!</label>
             <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().zipcode} name="zipcode"/> 
         
-        <input type="submit" value="Create New Listing!"></input> 
+        <input type="submit" value={this.props.editMode ? "Update This Listing" : "Create New Listing!"}></input> 
       </form>
 
       {console.log(this.state)}

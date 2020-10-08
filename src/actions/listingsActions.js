@@ -88,9 +88,9 @@ export const updateListing = (listingData) => {
     //debugger
     return (dispatch) => {
         debugger
-        return fetch('http://localhost:3001/listings', {
+        return fetch(`http://localhost:3001/listings/${listingData.seller_id}`, {
             credentials: "include",
-            method: "POST",
+            method: "PATCH",
             headers: {
                 
                 "Content-Type": "application/json",
@@ -105,7 +105,7 @@ export const updateListing = (listingData) => {
                 alert(listingJson.status)
             }
             else {
-                console.log("made it here")
+                console.log("made it here in update patch")
                 dispatch(updateListingSuccess(listingJson.data))
                 //dispatch(resetingLoginForm())
                 //history.push(`/listings/${listingJson.data.id}`)
