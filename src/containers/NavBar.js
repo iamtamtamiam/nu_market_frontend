@@ -5,12 +5,17 @@ import LoginForm from '../components/LoginForm'
 import LogOut from "../components/LogOut"
 import {Link} from 'react-router-dom'
 
+import {Navbar, Nav} from 'react-bootstrap'
+
 const NavBar = ({ currentUser }) => {
 
   if (!currentUser) {
     return (
-      <div>Please log in to see NavBar
-        <LoginForm/>
+      <div>
+        <Navbar bg="light" variant="light" justify-content-between>
+          <Nav.Item>Please log in to see NavBar</Nav.Item>
+          <Nav.Item><LoginForm/></Nav.Item>
+        </Navbar>
       </div>
     )
   } else {
@@ -20,15 +25,19 @@ const NavBar = ({ currentUser }) => {
     //{currentUser ? <LogOut/> : <LoginForm/>}
     return (
         <div>
-            <p> in Nav Bar</p>
-            {`welcome, ${currentUser.attributes.username}`}
-           
-            <Link exact="true" to={`/`}>Home</Link>
-            <Link exact="true" to={`/users/${currentUser.id}/listings`}>My Listings</Link>
+          <Navbar bg="light" variant="light" justify-content-between>
+            <Nav className="mr-auto" className="justify-content-center" >
+              <Nav.Item>in Nav Bar</Nav.Item>
+              <Nav.Item>{`welcome, ${currentUser.attributes.username}`}</Nav.Item>
 
-            <LogOut/>
-           
+                <Nav.Item><Link exact="true" to={`/`}>Home</Link></Nav.Item>
+                <Nav.Item><Link exact="true" to={`/users/${currentUser.id}/listings`}>My Listings</Link></Nav.Item>
 
+          
+
+                <LogOut/>
+              </Nav>
+            </Navbar>
         </div>
 
     )
