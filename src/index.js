@@ -12,6 +12,7 @@ import loginForm from './reducers/loginFormReducer'
 import listingsReducer from './reducers/listingsReducer'
 import {BrowserRouter as Router} from 'react-router-dom'
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 // ReactDOM.render(
 //   <React.StrictMode>
 //     <App />
