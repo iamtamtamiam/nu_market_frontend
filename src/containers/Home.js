@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import AllListings from './AllListings';
 
+import {Jumbotron} from 'react-bootstrap'
+
 class Home extends Component {
     //all listings need to be refined into listing cards info
 
@@ -8,7 +10,13 @@ class Home extends Component {
     render(){
         return (
             <div>
-                <h1>Im HOME!</h1>
+                
+
+                <Jumbotron 
+                    style={ {width: '100%', objectFit: 'cover', textAlign: 'center', backgroundColor: '#rgb(194 196 197)'} }>
+                        <h1>HOME</h1>
+                </Jumbotron>
+
                     <AllListings/>
 
                 <p>end of Home</p>

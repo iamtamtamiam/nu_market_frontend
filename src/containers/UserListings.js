@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 import UserListingCard from '../components/UserListingCard'
 
-import {Container, CardDeck} from 'react-bootstrap'
+import {Container, CardDeck, Button, Jumbotron} from 'react-bootstrap'
 
 class UserListings extends Component {
 
@@ -15,7 +15,9 @@ class UserListings extends Component {
         const {currentUser, AllListings} = this.props
         //const currentUser2 = this.props.currentUser
 
-        const linkToNew = <Link exact="true" to={`/listings/new`}>Add a New Listings</Link>
+        //NEED TO TAKE OUT LINK TO NEW BC OF BUTTON
+
+        const linkToNew = <Link exact="true" to={`/listings/new`}>Add a New Listing</Link>
 
 
         {while (currentUser === "") { return (<div>You have no listings... {linkToNew}</div>)}
@@ -25,10 +27,20 @@ class UserListings extends Component {
       
 
         return (
+
             <div>
-                {linkToNew}
-                done loading?
-                inside UserListings
+                <Jumbotron 
+                    style={ {width: '100%', objectFit: 'cover', textAlign: 'center', backgroundColor: '#5982ab'} }>
+                        <h1>UserListings</h1>
+                </Jumbotron>
+
+                <Link exact="true" to={`/listings/new`}>
+                    <Button variant="outline-success" size="lg" block >
+                        Add a New Listing
+                    </Button>
+                </Link>
+               
+             
                 {console.log(this.props)}
                 {console.log(currentUser)}
                 {console.log(currentUser.attributes.seller_listings)}
@@ -49,6 +61,13 @@ class UserListings extends Component {
                         )}
                     </CardDeck>
                 </Container>
+
+                End of Listings
+                <Link exact="true" to={`/listings/new`}>
+                    <Button variant="outline-success" size="lg" block >
+                        Add a New Listing
+                    </Button>
+                </Link>
 
             </div>
 
