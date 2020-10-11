@@ -15,10 +15,10 @@ export const addListing = json => {
 }
 
 
-export const updateListingSuccess = trip => {
+export const updateListingSuccess = json => {
     return {
       type: "UPDATE_LISTING",
-      trip
+      json
     }
   }
 
@@ -82,13 +82,21 @@ export const createListing = (listingData, history) => {
 }
 
 
-export const updateListing = (listingData) => {
+export const updateListing = (listingData, history) => {
     //make sure to set loginData object
-    console.log("update listing data is", listingData)
+    const sendableListingData = {
+        item: listingData.item,
+        description: listingData.description,
+        price: listingData.price,
+        condition: listingData.condition,
+        status: listingData.status,
+        zipcode: listingData.zipcode
+        
+    }
+    console.log("update listing data is", sendableListingData)
     //debugger
     return (dispatch) => {
-        debugger
-        return fetch(`http://localhost:3001/listings/${listingData.seller_id}`, {
+        return fetch(`http://localhost:3001/listings/${listingData.listingID}`, {
             credentials: "include",
             method: "PATCH",
             headers: {
@@ -96,7 +104,7 @@ export const updateListing = (listingData) => {
                 "Content-Type": "application/json",
                 "Accept": "application/json" 
             },
-            body: JSON.stringify(listingData)
+            body: JSON.stringify(sendableListingData)
         })
         .then(resp => resp.json())
         .then(listingJson => {
@@ -106,9 +114,11 @@ export const updateListing = (listingData) => {
             }
             else {
                 console.log("made it here in update patch")
+                console.log(listingJson)
                 dispatch(updateListingSuccess(listingJson.data))
                 //dispatch(resetingLoginForm())
-                //history.push(`/listings/${listingJson.data.id}`)
+                history.push(`/listings/${listingJson.data.id}`)
+                debugger
             }
         })
         .catch(console.log)

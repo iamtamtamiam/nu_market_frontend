@@ -2,6 +2,8 @@ import React from 'react';
 //import {connect} from 'react-redux';
 //import {logout} from '../actions/userActions'
 
+import {Jumbotron, Card} from 'react-bootstrap'
+
 
 
 const ListingShow = ({listingToShow}) => {
@@ -14,13 +16,32 @@ const ListingShow = ({listingToShow}) => {
     return (
             
         <div>
-          this is a listings show page
-          <h3>{listingAttrs.item}</h3>
-          <p>{listingAttrs.price} - {listingAttrs.condition} </p>
-          <p>{listingAttrs.description}</p>
-          <p>maybe take off? {listingAttrs.contact}</p>
-          <p>near: {listingAttrs.zipcode}</p>
-          <p>maybe change? {listingAttrs.status}</p>
+          <Jumbotron 
+              style={ {width: '100%', objectFit: 'cover', textAlign: 'center', backgroundColor: '#5982ab'} }>
+                  <h3>Listing Show Page</h3>
+                  <h1>{listingAttrs.item}</h1>
+          </Jumbotron>
+
+        
+          <Card style={ {height: 'auto'}}>
+            <Card.Img variant="top" src="https://cdn.shopify.com/s/files/1/2440/7149/products/Solid_Blue-Gray_600x.jpg?v=1579880598" 
+                    style={ {width: '70%', height: '12rem', objectFit: 'cover', position: 'relative', margin:'auto'} }
+                />
+            <Card.Body
+                    style={ {width: '70%', height: '12rem', objectFit: 'cover', position: 'relative', margin:'auto'} }
+            >
+            
+            <Card.Text>
+                <p>{listingAttrs.price} - {listingAttrs.condition} </p>
+                <p>{listingAttrs.description}</p>
+            </Card.Text>
+            <Card.Text>
+                <p>maybe take off? {listingAttrs.contact}</p>
+                <p>near: {listingAttrs.zipcode}</p>
+                <p>maybe change? {listingAttrs.status}</p>
+            </Card.Text>
+            </Card.Body>
+          </Card>
         </div> 
       );
 

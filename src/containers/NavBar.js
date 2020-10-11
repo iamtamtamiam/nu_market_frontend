@@ -25,13 +25,14 @@ const NavBar = ({ currentUser }) => {
     //{currentUser ? <LogOut/> : <LoginForm/>}
     return (
         <div>
-          <Navbar bg="light" variant="light" justify-content-between>
+          <Navbar bg="light" variant="light" >
             <Nav className="mr-auto" className="justify-content-center" >
-              <Nav.Item>in Nav Bar</Nav.Item>
-              <Nav.Item>{`welcome, ${currentUser.attributes.username}`}</Nav.Item>
+              <Nav.Item style={{padding: "3px"}}>in Nav Bar</Nav.Item>
+              
 
-                <Nav.Item><Link exact="true" to={`/`}>Home</Link></Nav.Item>
-                <Nav.Item><Link exact="true" to={`/users/${currentUser.id}/listings`}>My Listings</Link></Nav.Item>
+                <Nav.Item style={{padding: "3px"}}><Link exact="true" to={`/`}>Home</Link></Nav.Item>
+                <Nav.Item style={{padding: "3px"}}><Link exact="true" to={`/users/${currentUser.id}/listings`}>My Listings</Link></Nav.Item>
+                <Nav.Item style={{padding: "3px 3px 3px 50px"}}>{`Welcome, ${currentUser.attributes.username}!`}</Nav.Item>
 
           
 

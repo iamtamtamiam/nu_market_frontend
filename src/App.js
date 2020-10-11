@@ -48,10 +48,10 @@ class App extends React.Component{
         <div>
           {/*this.props.currentUser ? <LogOut/> : <LoginForm/>*/}
           <NavBar location={this.props.location}/>
-            <img src={logo} className="App-logo" alt="logo" />
+             {/*<img src={logo} className="App-logo" alt="logo" />
             <p>
               inside scr/app.js - after navbar
-            </p>
+            </p> */}
 
           <Switch>
             <Route exact path="/" component={Home} />

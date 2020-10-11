@@ -12,11 +12,11 @@ class ListingEdit extends React.Component {
 
     handleSubmit = (passedState, userID) => {
         console.log("made it to handle submit", passedState)
-        updateListing({
+        this.props.updateListing({
             ...passedState,
-            litingID: this.props.listingToEdit.id,
+            listingID: this.props.listingToEdit.id,
             seller_id: userID
-        })
+        }, this.props.history)
     }
 
 

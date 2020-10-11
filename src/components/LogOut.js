@@ -17,7 +17,6 @@ const LogOut = ({logout, history}) => {
 
     return (
         <form onSubmit={handleSubmit}>
-            hello from log out
             <input type="submit" value="LogOut!"></input>
         </form>
 
