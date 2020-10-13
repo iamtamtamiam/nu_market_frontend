@@ -15,6 +15,10 @@ export default (state = [], action) => {
             return state.map(listing => listing.id === action.json.id ? action.json : listing)
             // state.map(listing => listing.id === action.json.id ? action.listing : listing)
 
+        case "DELETE_LISTING":
+            console.log(action.listingID)
+            return state.filter(listing => listing.id === action.listingID ? false : true)
+
         default: 
             return state
     }

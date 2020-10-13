@@ -1,3 +1,5 @@
+
+
 export const setAllListings = json => {
     return {
         type: "SET_ALL_LISTINGS",
@@ -19,6 +21,15 @@ export const updateListingSuccess = json => {
     return {
       type: "UPDATE_LISTING",
       json
+    }
+  }
+
+
+
+  export const deleteListingSuccess = listingID => {
+    return {
+      type: "DELETE_LISTING",
+      listingID
     }
   }
 
@@ -118,7 +129,47 @@ export const updateListing = (listingData, history) => {
                 dispatch(updateListingSuccess(listingJson.data))
                 //dispatch(resetingLoginForm())
                 history.push(`/listings/${listingJson.data.id}`)
+                
+            }
+        })
+        .catch(console.log)
+
+    }
+
+}
+
+
+
+export const deleteListing = (listingID, history) => {
+    //make sure to set loginData object
+    
+    console.log("listing to delete is", listingID)
+    //debugger
+    return (dispatch) => {
+        return fetch(`http://localhost:3001/listings/${listingID}`, {
+            credentials: "include",
+            method: "DELETE",
+            headers: {
+                
+                "Content-Type": "application/json",
+                "Accept": "application/json" 
+            },
+        })
+        .then(resp => resp.json())
+        .then(listingJson => {
+            console.log(listingJson)
+            if (listingJson.error){
+                alert(listingJson.error)
+            }
+            else {
+                console.log("made it here in delete")
+                console.log(listingJson, history)
+                dispatch(deleteListingSuccess(listingID))
+                //dispatch(resetingLoginForm())
                 debugger
+                //history.replace(`/`)
+                history.push(`/`)
+                
             }
         })
         .catch(console.log)
