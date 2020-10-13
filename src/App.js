@@ -17,6 +17,8 @@ import ListingForm from './components/ListingForm'
 import ListingEdit from './containers/ListingEdit'
 import ListingNew from './containers/ListingNew';
 
+import Requests from './containers/Requests'
+
 // function App() {
 //   return (
 //     <div className="App">
@@ -69,6 +71,12 @@ class App extends React.Component{
               const listingToEdit = this.props.listings.find(listing => listing.id === props.match.params.id)
               console.log(listingToEdit)
               return <ListingEdit listingToEdit={listingToEdit} {...props} />
+            }} />
+
+            <Route exact path="/listings/:id/requests" render={props => {
+              const listingForRequests = this.props.listings.find(listing => listing.id === props.match.params.id)
+              console.log(listingForRequests)
+              return <Requests listingForRequests={listingForRequests} {...props} />
             }} />
 
             

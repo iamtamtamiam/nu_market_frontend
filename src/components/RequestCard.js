@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
 //import {logout} from '../actions/userActions'
-import {Link} from 'react-router-dom'
+//import {Link} from 'react-router-dom'
 
 import {Card} from 'react-bootstrap'
 
-const UserListingCard = (props) => {
+const RequestCard = (props) => {
     console.log(props)
+    const requestToShow = props.request
 
     // const listingAttributes = props.listing.attributes.forEach(attribute => {
     //     return (
@@ -37,7 +38,7 @@ const UserListingCard = (props) => {
 
 //could split up listing attributes here depending on currentuser
 
-    const attributesObj = props.listingAttr
+    //const attributesObj = props.listingAttr
     //{listingAttributes()}
 
 //FIND BUYER BY NAME? fetch buyers?
@@ -50,24 +51,22 @@ const UserListingCard = (props) => {
                     style={ {width: '100%', height: '12rem', objectFit: 'cover'} }
                 />
                 <Card.Body>
-                    <Card.Title>{attributesObj.item} this will be an indiviudal listing of a User</Card.Title>
+                    <Card.Title>This is an individual request in reqcard</Card.Title>
                     <Card.Text>
                         <ul>
-                            <li>price: {attributesObj.price}</li>
-                            <li>description: {attributesObj.description}</li>
+                            <li>phone: {requestToShow.phone}</li>
+                            <li>message: {requestToShow.message}</li>
                             
-                            <li>condition: {attributesObj.condition}</li>
-                            <li>status: {attributesObj.status}</li>
-                            <li>zipcode: {attributesObj.zipcode}</li>
-                            <li>contact: {attributesObj.contact}</li>
+                            <li>sent: {requestToShow.updated_at}</li>
+                            
                         </ul>
                     </Card.Text>   
                 </Card.Body>
                 <Card.Footer>
-                    <p>requests: {attributesObj.requests.length}</p>
-                    <Link exact="true" to={`/listings/${props.listingId}/requests`}>requests: {attributesObj.requests.length}</Link>
-                    <small className="text-muted">Buyer: {props.listingBuyer.data ? props.listingBuyer.data.id : "no buyer" }</small><br></br>
-                    {(props.currentUser.id === props.listingSeller.data.id) ? (<Link to={`/listings/${props.listingId}/edit`}>Edit this listing</Link>) : "I am NOT seller" }
+                    
+                    
+                    <small className="text-muted">footer</small><br></br>
+                    
                 </Card.Footer>
             </Card>
            
@@ -85,4 +84,4 @@ const mapStateToProps = ({ currentUser }) => {
     }
   }
 
-export default connect(mapStateToProps)(UserListingCard)
+export default connect(mapStateToProps)(RequestCard)
