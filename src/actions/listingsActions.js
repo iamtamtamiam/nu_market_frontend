@@ -33,6 +33,15 @@ export const updateListingSuccess = json => {
     }
   }
 
+
+  export const addRequest = json => {
+    return {
+        type: "ADD_REQUEST",
+        json
+    }
+
+}
+
 export const getAllListings = () => {
 
     return dispatch => {
@@ -143,7 +152,7 @@ export const updateListing = (listingData, history) => {
 export const deleteListing = (listingID, history) => {
     //make sure to set loginData object
     
-    console.log("listing to delete is", listingID)
+   
     //debugger
     return (dispatch) => {
         return fetch(`http://localhost:3001/listings/${listingID}`, {
@@ -157,23 +166,61 @@ export const deleteListing = (listingID, history) => {
         })
         .then(resp => resp.json())
         .then(listingJson => {
-            console.log(listingJson)
+            
             if (listingJson.error){
                 alert(listingJson.error)
+                return
             }
-            else {
-                console.log("made it here in delete")
-                console.log(listingJson, history)
-                dispatch(deleteListingSuccess(listingID))
-                //dispatch(resetingLoginForm())
                 debugger
-                //history.replace(`/`)
-                history.push(`/`)
+                dispatch({
+                    type: "DELETE_LISTING",
+                    listingID
+                  })
+
+                //dispatch(resetingLoginForm())
                 
-            }
+                //history.replace(`/`)
+                history.push(`/`)           
+        
         })
         .catch(console.log)
 
     }
 
+}
+
+
+export const createRequest = (requestData, history) => {
+    //make sure to set loginData object
+    console.log("request data is", requestData)
+    return (dispatch) => {
+        //can take out next line?
+        //dispatch({type: 'LOGIN'})
+        return fetch('http://localhost:3001/requests', {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                
+                "Content-Type": "application/json",
+                "Accept": "application/json" 
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(resp => resp.json())
+        .then(requestJson => {
+            console.log(requestJson)
+            if (requestJson.status){
+                alert(requestJson.status)
+            }
+            else {
+                console.log("made it here in added request")
+                dispatch(addRequest(requestJson.data))
+                //dispatch(resetingLoginForm())
+                history.push(`/`)
+            }
+        })
+        .catch(console.log())
+
+
+    }
 }

@@ -20,6 +20,7 @@ class AllListings extends Component {
                     currentUser={this.props.currentUser}
                     key={listing.id}
                     listing={listing}
+                    history={this.props.history}
                 />
 
             )

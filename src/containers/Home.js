@@ -8,6 +8,7 @@ class Home extends Component {
 
 
     render(){
+        console.log(this.props)
         return (
             <div>
                 
@@ -17,7 +18,7 @@ class Home extends Component {
                         <h1>HOME</h1>
                 </Jumbotron>
 
-                    <AllListings/>
+                    <AllListings {...this.props}/>
 
                 <p>end of Home</p>
             </div>

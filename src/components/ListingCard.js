@@ -6,6 +6,8 @@ import {Link} from 'react-router-dom';
 
 import {Card} from 'react-bootstrap'
 
+import RequestForm from './RequestForm'
+
 const ListingCard = (props) => {
     console.log(props)
 
@@ -49,7 +51,11 @@ const ListingCard = (props) => {
     //to={`/listings/${props.listing.id}`}
 
 //could split up listing attributes here depending on currentuser
+  
+    while (props.listing === "") { return (<div>loading</div>)}
+
     return (
+
         <div>
             <Card>
                 <Card.Img variant="top" src="https://images-na.ssl-images-amazon.com/images/I/11JFQo2o59L._SX331_BO1,204,203,200_.jpg" 
@@ -62,6 +68,10 @@ const ListingCard = (props) => {
                         <p>{listingAttr.zipcode}</p>
                     </Card.Text>
                 </Card.Body>
+                <Card.Footer>
+
+                    {(props.currentUser.id === props.listing.relationships.seller.data.id) ? "you are the seller" : <RequestForm {...props}/> }
+                </Card.Footer>
             </Card>
 
         </div>

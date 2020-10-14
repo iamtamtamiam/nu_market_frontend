@@ -51,7 +51,7 @@ const RequestCard = (props) => {
                     style={ {width: '100%', height: '12rem', objectFit: 'cover'} }
                 />
                 <Card.Body>
-                    <Card.Title>This is an individual request in reqcard</Card.Title>
+                    <Card.Title>From: {requestToShow.name} - This is an individual request in reqcard</Card.Title>
                     <Card.Text>
                         <ul>
                             <li>phone: {requestToShow.phone}</li>

@@ -32,7 +32,7 @@ class ListingEdit extends React.Component {
                   <br/>
                   
 
-                  <Button variant="danger" onClick={()=>this.props.deleteListing(listingID, this.props.history)}> Delete This Listing</Button> 
+                  <button variant="danger" onClick={()=>this.props.deleteListing(listingID, this.props.history)}> Delete This Listing</button> 
                   
                 </>
       }
