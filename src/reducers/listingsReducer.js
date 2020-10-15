@@ -26,6 +26,7 @@ export default (state = [], action) => {
             const listingToAttach = state.find(listing => listing.id === action.json.relationships.listing.data.id)
             console.log(listingToAttach.attributes.requests)
             const requestToAttach = {
+                name: action.json.attributes.name,
                 buyer_id: action.json.attributes.buyer.id,
                 created_at: action.json.attributes.updated_at,
                 id: action.json.id,
@@ -35,7 +36,14 @@ export default (state = [], action) => {
                 updated_at: action.json.attributes.updated_at
             }
             const updatedRequestsArray = listingToAttach.attributes.requests.concat(requestToAttach)
-            const updatedListing = {...listingToAttach, requests: updatedRequestsArray}
+            // const updatedListing = {...listingToAttach, requests: updatedRequestsArray}
+            const updatedListing = {
+                ...listingToAttach, 
+                attributes:{
+                    ...listingToAttach.attributes,
+                    requests: updatedRequestsArray
+                }
+            }
             return state.map(listing => listing.id === updatedListing.id ? updatedListing : listing)
 
         default: 
