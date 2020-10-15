@@ -32,6 +32,7 @@ const NavBar = ({ currentUser }) => {
 
                 <Nav.Item style={{padding: "3px"}}><Link exact="true" to={`/`}>Home</Link></Nav.Item>
                 <Nav.Item style={{padding: "3px"}}><Link exact="true" to={`/users/${currentUser.id}/listings`}>My Listings</Link></Nav.Item>
+                <Nav.Item style={{padding: "3px"}}><Link exact="true" to={`/search`}>Search</Link></Nav.Item>
                 <Nav.Item style={{padding: "3px 3px 3px 50px"}}>{`Welcome, ${currentUser.attributes.username}!`}</Nav.Item>
 
           

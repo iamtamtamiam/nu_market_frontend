@@ -18,6 +18,7 @@ import ListingEdit from './containers/ListingEdit'
 import ListingNew from './containers/ListingNew';
 
 import Requests from './containers/Requests'
+import Search from './components/Search'
 
 // function App() {
 //   return (
@@ -78,6 +79,8 @@ class App extends React.Component{
               console.log(listingForRequests)
               return <Requests listingForRequests={listingForRequests} {...props} />
             }} />
+
+<Route exact path="/search" component={Search} />
 
             
           </Switch>
