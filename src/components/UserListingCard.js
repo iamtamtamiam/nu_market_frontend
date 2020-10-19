@@ -1,6 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux';
-//import {logout} from '../actions/userActions'
+
 import {Link} from 'react-router-dom'
 
 import {Card, Carousel} from 'react-bootstrap'
@@ -26,7 +25,7 @@ const UserListingCard = (props) => {
                 {attributesObj.photos.length > 0 &&
                     attributesObj.photos.map(photo => { return (
                         <Carousel.Item key={photo.id}>
-                            <img variant="top" src={photo.url} 
+                            <img variant="top" src={photo.url} alt=""
                             style={ {width: '70%', height: '20rem', objectFit: 'contain', position: 'relative', margin:'auto'} }
                             />
                         </Carousel.Item>

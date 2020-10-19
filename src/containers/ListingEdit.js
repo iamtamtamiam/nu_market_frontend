@@ -4,7 +4,7 @@ import ListingForm from '../components/ListingForm'
 import {updateListing, deleteListing} from '../actions/listingsActions' 
 import {connect} from 'react-redux';
 
-import Button from 'react-bootstrap/Button'
+
 
 class ListingEdit extends React.Component {
 
@@ -13,7 +13,7 @@ class ListingEdit extends React.Component {
 
 
     handleSubmit = (passedState, userID) => {
-        console.log("made it to handle submit", passedState)
+        //console.log("made it to handle submit", passedState)
         this.props.updateListing({
             ...passedState,
             listingID: this.props.listingToEdit.id,
