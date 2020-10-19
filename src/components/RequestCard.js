@@ -78,10 +78,10 @@ const RequestCard = (props) => {
 }
 
 
-const mapStateToProps = ({ currentUser }) => {
-    return {
-      currentUser
-    }
-  }
+// const mapStateToProps = ({ currentUser }) => {
+//     return {
+//       currentUser
+//     }
+//   }
 
-export default connect(mapStateToProps)(RequestCard)
+export default (RequestCard)

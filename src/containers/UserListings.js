@@ -57,6 +57,7 @@ class UserListings extends Component {
                                 listingAttr={item.attributes}
                                 listingBuyer={item.relationships.buyer}
                                 listingSeller={item.relationships.seller}
+                                currentUser={currentUser}
                            />
                         )}
                     </CardDeck>

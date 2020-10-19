@@ -79,10 +79,12 @@ const UserListingCard = (props) => {
 }
 
 
-const mapStateToProps = ({ currentUser }) => {
-    return {
-      currentUser
-    }
-  }
+// const mapStateToProps = ({ currentUser }) => {
+//     return {
+//       currentUser
+//     }
+//   }
 
-export default connect(mapStateToProps)(UserListingCard)
+// export default connect(mapStateToProps)(UserListingCard)
+
+export default (UserListingCard)
