@@ -3,8 +3,6 @@ import React from 'react';
 
 import {Jumbotron, Card, Carousel} from 'react-bootstrap'
 
-
-
 const ListingShow = ({listingToShow}) => {
   
   const listingAttrs = listingToShow.attributes
