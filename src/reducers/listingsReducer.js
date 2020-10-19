@@ -46,6 +46,26 @@ export default (state = [], action) => {
             }
             return state.map(listing => listing.id === updatedListing.id ? updatedListing : listing)
 
+            case "ADD_PHOTO":
+            console.log("in add photo reducer", action.json, state)
+            const listingToAttachPhoto = state.find(listing => listing.id === action.json.attributes.listing.id.toString())
+            //debugger
+            console.log(listingToAttachPhoto)
+             const photoToAttach = {
+                 url: action.json.attributes.url,
+                 listing_id: action.json.attributes.listing.id,
+             }
+            const updatedPhotosArray = listingToAttachPhoto.attributes.photos.concat(photoToAttach)
+            
+             const updatedListingtoAttachPhoto = {
+                 ...listingToAttachPhoto, 
+                 attributes:{
+                     ...listingToAttachPhoto.attributes,
+                     photos: updatedPhotosArray
+                 }
+             }
+            // return state.map(listing => listing.id === updatedListing.id ? updatedListing : listing)
+            return state.map(listing => listing.id === updatedListingtoAttachPhoto.id ? updatedListingtoAttachPhoto : listing)
         default: 
             return state
     }

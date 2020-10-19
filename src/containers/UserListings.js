@@ -58,6 +58,7 @@ class UserListings extends Component {
                                 listingBuyer={item.relationships.buyer}
                                 listingSeller={item.relationships.seller}
                                 currentUser={currentUser}
+                                history={this.props.history}
                            />
                         )}
                     </CardDeck>

@@ -42,6 +42,14 @@ export const updateListingSuccess = json => {
 
 }
 
+export const addPhoto = json => {
+    return {
+        type: "ADD_PHOTO",
+        json
+    }
+
+}
+
 export const getAllListings = () => {
 
     return dispatch => {
@@ -217,6 +225,42 @@ export const createRequest = (requestData, history) => {
                 dispatch(addRequest(requestJson.data))
                 //dispatch(resetingLoginForm())
                 history.push(`/`)
+            }
+        })
+        .catch(console.log())
+
+
+    }
+}
+
+
+export const createPhoto = (photoData, history) => {
+    //make sure to set loginData object
+    console.log("photo data is", photoData)
+    return (dispatch) => {
+        //can take out next line?
+        //dispatch({type: 'LOGIN'})
+        return fetch('http://localhost:3001/photos', {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                
+                "Content-Type": "application/json",
+                "Accept": "application/json" 
+            },
+            body: JSON.stringify(photoData)
+        })
+        .then(resp => resp.json())
+        .then(photoJson => {
+            console.log(photoJson)
+            if (photoJson.status){
+                alert(photoJson.status)
+            }
+            else {
+                console.log("made it here in added photo")
+                dispatch(addPhoto(photoJson.data))
+                //dispatch(resetingLoginForm())
+                history.push(`/listings/${photoData.listing_id}`)
             }
         })
         .catch(console.log())

@@ -65,6 +65,25 @@ baseState = this.state
 
  
   render() {
+
+    const photoInputs = () => {
+      //debugger
+      if (this.props.editMode){
+        return (
+          "in edit mode, cant edit photos"
+          
+        )
+
+      } else {
+        return (
+          <div>
+            <label>Add 1 Image - Image URL</label>
+            <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().zipcode} name="zipcode"/>
+          </div>
+        )
+      }
+    }
+
     return (
         <div>
         This is the Listing form!
@@ -90,14 +109,17 @@ baseState = this.state
         <label>Contact - may want to remove!!</label>
             <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().contact} name="contact"/> 
         <label>Zipcode - may want to remove!!</label>
-            <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().zipcode} name="zipcode"/> 
+            <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().zipcode} name="zipcode"/>
+
+      
+
         
         <Button variant="info" type="submit">{this.props.editMode ? "Update This Listing" : "Create New Listing!"} </Button> 
       </form>
 
       {console.log(this.state)}
       
-
+      {photoInputs()}
       </div>
     )
   }

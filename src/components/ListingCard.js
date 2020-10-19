@@ -54,13 +54,27 @@ const ListingCard = (props) => {
   
     while (props.listing === "") { return (<div>loading</div>)}
 
+
+// <Card.Img variant="top" src="https://images-na.ssl-images-amazon.com/images/I/11JFQo2o59L._SX331_BO1,204,203,200_.jpg" 
+//                     style={ {width: '100%', height: '12rem', objectFit: 'cover'} }
+//                 /> 
+
+ 
     return (
 
         <div>
             <Card>
-                <Card.Img variant="top" src="https://images-na.ssl-images-amazon.com/images/I/11JFQo2o59L._SX331_BO1,204,203,200_.jpg" 
-                    style={ {width: '100%', height: '12rem', objectFit: 'cover'} }
-                />
+
+            {listingAttr.photos.length > 0 &&
+            
+            <Card.Img variant="top" src={listingAttr["photos"][0]["url"]} 
+            style={ {width: '100%', height: '12rem', objectFit: 'cover'} }
+            />
+
+            }
+
+                  
+                 
                 <Card.Body>
                     <Card.Title><Link key={props.listing.id}  to={`/listings/${props.listing.id}`}>{listingAttr.item}</Link></Card.Title>
                     <Card.Text>

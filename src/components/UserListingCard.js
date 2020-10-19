@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom'
 
 import {Card} from 'react-bootstrap'
+import PhotoForm from './PhotoForm'
 
 const UserListingCard = (props) => {
     console.log(props)
@@ -49,6 +50,16 @@ const UserListingCard = (props) => {
                 <Card.Img variant="top" src="https://cdn.shopify.com/s/files/1/2440/7149/products/Solid_Blue-Gray_600x.jpg?v=1579880598" 
                     style={ {width: '100%', height: '12rem', objectFit: 'cover'} }
                 />
+
+                {attributesObj.photos.length > 0 &&
+            
+                    attributesObj.photos.map(photo => { return (
+                        <Card.Img variant="top" src={photo.url} 
+                            style={ {width: '100%', height: '100%', objectFit: 'cover'} }
+                        />)
+                    })
+                }
+
                 <Card.Body>
                     <Card.Title>{attributesObj.item} this will be an indiviudal listing of a User</Card.Title>
                     <Card.Text>
@@ -61,6 +72,7 @@ const UserListingCard = (props) => {
                             <li>zipcode: {attributesObj.zipcode}</li>
                             <li>contact: {attributesObj.contact}</li>
                         </ul>
+                        <PhotoForm listingId={props.listingId} history={props.history}/>
                     </Card.Text>   
                 </Card.Body>
                 <Card.Footer>
