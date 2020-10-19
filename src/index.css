@@ -26,3 +26,7 @@ code {
   font-size: 55px;
   color: red;
 }
+
+.carousel.slide{
+  text-align: center;
+}

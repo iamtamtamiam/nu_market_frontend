@@ -28,7 +28,7 @@ const ListingShow = ({listingToShow}) => {
                     style={ {width: '70%', height: '12rem', objectFit: 'cover', position: 'relative', margin:'auto'} }
                 />
           <Carousel
-            style={ {color: '#20c997'} }
+            style={ {textAlign: 'center'} }
           >
             {listingAttrs.photos.length > 0 &&
             

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 //import {logout} from '../actions/userActions'
 import {Link} from 'react-router-dom'
 
-import {Card} from 'react-bootstrap'
+import {Card, Carousel} from 'react-bootstrap'
 import PhotoForm from './PhotoForm'
 
 const UserListingCard = (props) => {
@@ -42,6 +42,11 @@ const UserListingCard = (props) => {
     //{listingAttributes()}
 
 //FIND BUYER BY NAME? fetch buyers?
+
+// <Card.Img variant="top" src={photo.url} 
+//                         style={ {width: '100%', height: '100%', objectFit: 'contain'} }
+//                         />)
+// 
     return (
         
         <div>
@@ -52,20 +57,30 @@ const UserListingCard = (props) => {
             
             
                 <Card.Img variant="top" src="https://cdn.shopify.com/s/files/1/2440/7149/products/Solid_Blue-Gray_600x.jpg?v=1579880598" 
-                    style={ {width: '100%', height: '80px', objectFit: 'fill'} }
+                    style={ {width: '100%', height: '200px', objectFit: 'fill'} }
                 />
             
             }
 
-
+            <Carousel> 
                 {attributesObj.photos.length > 0 &&
             
                     attributesObj.photos.map(photo => { return (
-                        <Card.Img variant="top" src={photo.url} 
-                        style={ {width: '100%', height: '100%', objectFit: 'contain'} }
-                        />)
+
+
+                        <Carousel.Item>
+                            <img variant="top" src={photo.url} 
+                            style={ {width: '70%', height: '20rem', objectFit: 'contain', position: 'relative', margin:'auto'} }
+                            />
+                        </Carousel.Item>
+                        
+                        )
+
+
                     })
                 }
+
+            </Carousel> 
 
        
 

@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import Button from 'react-bootstrap/Button'
 import ListingCard from './ListingCard';
-import { Container, CardDeck } from 'react-bootstrap'
+import { Container, CardColumns } from 'react-bootstrap'
 
  
 class Search extends React.Component {
@@ -116,9 +116,9 @@ renderingItems = () => {
 
 
       <Container>
-          <CardDeck>
+          <CardColumns>
            {this.renderingItems()}
-          </CardDeck>
+          </CardColumns>
         </Container>  
       
 
