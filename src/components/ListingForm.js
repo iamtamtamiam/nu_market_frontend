@@ -18,7 +18,6 @@ class ListingForm extends React.Component {
 
 
 state = {
-    //item: this.props.listingToEdit ? this.props.listingToEdit.attributes.item : "",
     item: "",
     price: "",
     description:"",
@@ -28,32 +27,19 @@ state = {
   }
  
  
-baseState = this.state
-
-//seller_id: this.props.userID,
   
  
   handleInputChange = event => {
     const {name, value} = event.target
-    // const loginFormInfo = {
-    //     ...props.loginForm,
-    //     [name]: value
-    // }
+    
     this.setState({
         ...this.state,
         [name]: value
     })
-    //props.fillLoginForm(loginFormInfo)
-    //console.log(this.state)
+    
     }
 
 
-    // handleSubmit = event => {
-    //     event.preventDefault()
-    //     console.log("made it to handle submit!")
-    //     this.props.createListing({...this.state, seller_id: this.props.userID,}, this.props.history)
-    //     this.setState(this.initialState)
-    // }
 
     valueType = () => {
         if (this.props.editMode){
@@ -72,9 +58,8 @@ baseState = this.state
         <div>
         This is the Listing form!
 
-        {console.log(this.props)}
         
-    
+        
       <form onSubmit={event => {
           event.preventDefault()
           this.props.handleSubmit(this.state, this.props.userID)
@@ -101,9 +86,7 @@ baseState = this.state
         <Button variant="info" type="submit">{this.props.editMode ? "Update This Listing" : "Create New Listing!"} </Button> 
       </form>
 
-      {console.log(this.state)}
-      
-    
+ 
       </div>
     )
   }

@@ -39,14 +39,11 @@ state = {
         <div>
         This is the Request form!
 
-        {console.log("props of reqeust from", this.props)}
+        
         
     
       <form onSubmit={event => {
           event.preventDefault()
-         
-          console.log("inside handle requestform")
-          
           this.props.createRequest({...this.state, buyer_id: this.props.currentUser.id, listing_id: this.props.listing.id}, this.props.history)
       }}>
 
@@ -63,9 +60,7 @@ state = {
         <Button variant="info" type="submit">Send Request </Button> 
       </form>
 
-      {console.log(this.state)}
-      
-
+  
       </div>
     )
   }
