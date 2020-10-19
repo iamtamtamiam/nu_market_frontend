@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import Button from 'react-bootstrap/Button'
 import ListingCard from './ListingCard';
 import { Container, CardDeck } from 'react-bootstrap'
-import { render } from '@testing-library/react';
+
  
 class Search extends React.Component {
 
@@ -15,7 +15,8 @@ class Search extends React.Component {
 state = {
     //item: this.props.listingToEdit ? this.props.listingToEdit.attributes.item : "",
     searchTerm: "",
-    itemsToRender: this.props.allListings
+    //itemsToRender: this.props.allListings
+    itemsToRender: ""
   }
  
  
@@ -50,35 +51,17 @@ handleInputChange = event => {
 }
 
 
-// renderingItems = this.state.itemsToRender.map(listing => {
-//     return(
-//         <ListingCard
-//             currentUser={this.props.currentUser}
-//             key={listing.id}
-//             listing={listing}
-//             history={this.props.history}
-//         />
-//     )
-// })
 
  handleSubmit = event => {
-     event.preventDefault()
-     console.log("made it to handle Search submit!")
-     //this.props.createListing({...this.state, seller_id: this.props.userID,}, this.props.history)
-     //this.setState(this.initialState)
-    console.log(this.state)
-    this.renderingItems()
-    
+     event.preventDefault() 
  }
 
 
-
-
-
- 
-  render() {
-
-    const renderingItems = this.state.itemsToRender.map(listing => {
+renderingItems = () => {
+  if (this.state.itemsToRender === ""){
+    return (
+      this.props.allListings.map(listing => {
+        console.log(listing)
         return(
             <ListingCard
                 currentUser={this.props.currentUser}
@@ -87,7 +70,34 @@ handleInputChange = event => {
                 history={this.props.history}
             />
         )
-    })
+      })
+    )
+  } else {
+    return(
+      this.state.itemsToRender.map(listing => {
+        return(
+            <ListingCard
+                currentUser={this.props.currentUser}
+                key={listing.id}
+                listing={listing}
+                history={this.props.history}
+            />
+        )
+      })
+    )
+  }
+
+}
+
+
+
+ 
+  render() {
+
+    
+    
+    
+   
 
     return (
         <div>
@@ -107,7 +117,7 @@ handleInputChange = event => {
 
       <Container>
           <CardDeck>
-           {renderingItems}
+           {this.renderingItems()}
           </CardDeck>
         </Container>  
       
