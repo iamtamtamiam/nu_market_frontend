@@ -14,7 +14,11 @@ class Home extends Component {
                 
 
                 <Jumbotron 
-                    style={ {width: '100%', objectFit: 'cover', textAlign: 'center', backgroundColor: '#rgb(194 196 197)'} }>
+                    
+                    style={ {width: '100%', objectFit: 'cover', textAlign: 'center', backgroundColor: '#5982ab'} }>
+                        <img src="https://i.ibb.co/5W97v0s/output-onlinepngtools.png"
+                            style={ {width: '20%', height: '20%'}}
+                        ></img>
                         <h1>HOME</h1>
                 </Jumbotron>
 

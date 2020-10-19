@@ -13,6 +13,12 @@ const ListingShow = ({listingToShow}) => {
   const listingAttrs = listingToShow.attributes
   console.log(listingAttrs)
 
+
+// <Card.Img variant="top" src="https://cdn.shopify.com/s/files/1/2440/7149/products/Solid_Blue-Gray_600x.jpg?v=1579880598" 
+//                     style={ {width: '70%', height: '12rem', objectFit: 'cover', position: 'relative', margin:'auto'} }
+//                 />
+//                 
+                
     return (
             
         <div>
@@ -24,9 +30,7 @@ const ListingShow = ({listingToShow}) => {
 
         
           <Card style={ {height: 'auto'}}>
-            <Card.Img variant="top" src="https://cdn.shopify.com/s/files/1/2440/7149/products/Solid_Blue-Gray_600x.jpg?v=1579880598" 
-                    style={ {width: '70%', height: '12rem', objectFit: 'cover', position: 'relative', margin:'auto'} }
-                />
+            
           <Carousel
             style={ {textAlign: 'center'} }
           >

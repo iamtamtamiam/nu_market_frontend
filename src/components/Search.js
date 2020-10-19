@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import Button from 'react-bootstrap/Button'
 import ListingCard from './ListingCard';
-import { Container, CardColumns } from 'react-bootstrap'
+import { Container, CardColumns, Jumbotron } from 'react-bootstrap'
 
  
 class Search extends React.Component {
@@ -101,10 +101,20 @@ renderingItems = () => {
 
     return (
         <div>
-        This is the Search
+        
+        <Jumbotron 
+                    style={ {width: '100%', objectFit: 'cover', textAlign: 'center', backgroundColor: '#5982ab'} }>
+                        <img src="https://i.ibb.co/5W97v0s/output-onlinepngtools.png"
+                            style={ {width: '20%', height: '20%'}}
+                        ></img>
+                        
+                        <h1>Search</h1>
+                </Jumbotron>
 
     
-      <form onSubmit={this.handleSubmit} >
+      <form onSubmit={this.handleSubmit}
+         style={ {textAlign: 'center'} }
+      >
 
           
 

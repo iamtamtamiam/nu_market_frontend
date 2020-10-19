@@ -31,6 +31,10 @@ class UserListings extends Component {
             <div>
                 <Jumbotron 
                     style={ {width: '100%', objectFit: 'cover', textAlign: 'center', backgroundColor: '#5982ab'} }>
+                        <img src="https://i.ibb.co/5W97v0s/output-onlinepngtools.png"
+                            style={ {width: '20%', height: '20%'}}
+                        ></img>
+                        
                         <h1>UserListings</h1>
                 </Jumbotron>
 
