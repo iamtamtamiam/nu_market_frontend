@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {fillLoginForm} from '../actions/loginActions'
 //import loginForm from '../reducers/loginFormReducer';
-import {login} from '../actions/userActions'
+import {login, signUp} from '../actions/userActions'
 
 
 const LoginForm = (props) => {
@@ -18,7 +18,10 @@ const LoginForm = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault()
-        props.login(props.loginForm)
+        if (props.signUpMode) {
+            props.signUp(props.loginForm)
+        } else {props.login(props.loginForm)}
+        
     }
 
     return (
@@ -41,7 +44,7 @@ const LoginForm = (props) => {
                 >
             </input>
 
-            <input type="submit" value="Login!"></input>
+            <input type="submit" value={props.signUpMode ? "Sign Me Up" : "Login!"}></input>
 
 
         </form>
@@ -57,4 +60,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, {fillLoginForm, login})(LoginForm)
+export default connect(mapStateToProps, {fillLoginForm, login, signUp})(LoginForm)

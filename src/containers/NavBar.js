@@ -5,16 +5,43 @@ import LoginForm from '../components/LoginForm'
 import LogOut from "../components/LogOut"
 import {Link} from 'react-router-dom'
 
-import {Navbar, Nav} from 'react-bootstrap'
+import {Navbar, Nav, Accordion, Card, Button} from 'react-bootstrap'
 
 const NavBar = ({ currentUser }) => {
 
   if (!currentUser) {
     return (
       <div>
-        <Navbar bg="light" variant="light" justify-content-between>
-          <Nav.Item>Please log in to see NavBar</Nav.Item>
-          <Nav.Item><LoginForm/></Nav.Item>
+        <Navbar bg="light" variant="light" justify-content="center"
+          style={ {justifyContent: 'center' } }
+        >
+          
+
+          <Accordion >
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                   Login Here!
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body> Login Info: <LoginForm/></Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+          OR<br></br>
+          <Accordion >
+            <Card>
+              <Card.Header>
+                <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                   Sign up here!
+                </Accordion.Toggle>
+              </Card.Header>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body> Enter Sign Up Info: <LoginForm signUpMode/></Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
         </Navbar>
       </div>
     )
@@ -25,9 +52,11 @@ const NavBar = ({ currentUser }) => {
     //{currentUser ? <LogOut/> : <LoginForm/>}
     return (
         <div>
-          <Navbar bg="light" variant="light" >
+          <Navbar bg="light" variant="light" 
+            style={ {justifyContent: 'center' } }
+          >
             <Nav className="mr-auto" className="justify-content-center" >
-              <Nav.Item style={{padding: "3px"}}>in Nav Bar</Nav.Item>
+              
               
 
                 <Nav.Item style={{padding: "3px"}}><Link exact="true" to={`/`}>Home</Link></Nav.Item>

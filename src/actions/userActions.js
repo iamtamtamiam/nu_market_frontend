@@ -103,3 +103,37 @@ export const logout = () => {
     }
 
 }
+
+
+export const signUp = (signUpData) => {
+    //make sure to set loginData object
+    console.log("signup data is", signUpData)
+    return (dispatch) => {
+    //     //can take out next line?
+         // dispatch({type: 'SIGNUP'})
+         return fetch('http://localhost:3001/signup', {
+             credentials: "include",
+             method: "POST",
+             headers: {
+                 
+                 "Content-Type": "application/json",
+                 "Accept": "application/json" 
+             },
+             body: JSON.stringify(signUpData)
+         })
+         .then(resp => resp.json())
+         .then(userJson => {
+             console.log(userJson)
+             if (userJson.status){
+                 alert(userJson.status)
+             }
+             else {
+                 dispatch(setCurrentUser(userJson.data))
+                 dispatch(resetingLoginForm())
+             }
+         })
+         .catch(console.log())
+
+
+     }
+}
