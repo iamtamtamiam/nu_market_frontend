@@ -241,7 +241,8 @@ export const createPhoto = (photoData, history) => {
         .then(resp => resp.json())
         .then(photoJson => {
             if (photoJson.status){
-                alert(photoJson.status)
+                
+                alert(photoJson.main.url)
             }
             else {
                 dispatch(addPhoto(photoJson.data))

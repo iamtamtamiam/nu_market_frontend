@@ -20,7 +20,7 @@ export const login = (loginData) => {
     //make sure to set loginData object
     console.log("login data is", loginData)
     return (dispatch) => {
-        //can take out next line?
+
         dispatch({type: 'LOGIN'})
         return fetch('http://localhost:3001/login', {
             credentials: "include",
@@ -36,7 +36,7 @@ export const login = (loginData) => {
         .then(userJson => {
             console.log(userJson)
             if (userJson.status){
-                alert(userJson.status)
+                alert("Incorrect Login Info.")
             }
             else {
                 dispatch(setCurrentUser(userJson.data))
@@ -125,7 +125,8 @@ export const signUp = (signUpData) => {
          .then(userJson => {
              console.log(userJson)
              if (userJson.status){
-                 alert(userJson.status)
+                 alert(userJson.main.username)
+                 alert(userJson.main.password)
              }
              else {
                  dispatch(setCurrentUser(userJson.data))
