@@ -46,7 +46,7 @@ baseState = this.state
           event.preventDefault()
           this.props.createRequest({...this.state, buyer_id: this.props.currentUser.id, listing_id: this.props.listing.id}, this.props.history)
           this.setState(this.baseState)
-          console.log(this.state)
+      
       }}>
 
           
