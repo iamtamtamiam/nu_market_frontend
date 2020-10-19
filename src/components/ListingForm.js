@@ -24,7 +24,7 @@ state = {
     description:"",
     condition: "",
     contact:"",
-    zipcode:""
+    zipcode:"",
   }
  
  
@@ -66,23 +66,7 @@ baseState = this.state
  
   render() {
 
-    const photoInputs = () => {
-      //debugger
-      if (this.props.editMode){
-        return (
-          "in edit mode, cant edit photos"
-          
-        )
-
-      } else {
-        return (
-          <div>
-            <label>Add 1 Image - Image URL</label>
-            <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().zipcode} name="zipcode"/>
-          </div>
-        )
-      }
-    }
+    
 
     return (
         <div>
@@ -119,7 +103,7 @@ baseState = this.state
 
       {console.log(this.state)}
       
-      {photoInputs()}
+    
       </div>
     )
   }

@@ -68,7 +68,7 @@ const ListingCard = (props) => {
             {listingAttr.photos.length > 0 &&
             
             <Card.Img variant="top" src={listingAttr["photos"][0]["url"]} 
-            style={ {width: '100%', height: '12rem', objectFit: 'cover'} }
+            style={ {width: '100%', height: '100%', objectFit: 'scale-down'} }
             />
 
             }

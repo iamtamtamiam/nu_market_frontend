@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom'
 
 import UserListingCard from '../components/UserListingCard'
 
-import {Container, CardDeck, Button, Jumbotron} from 'react-bootstrap'
+import {Container, CardColumns, Button, Jumbotron} from 'react-bootstrap'
 
 class UserListings extends Component {
 
@@ -48,7 +48,7 @@ class UserListings extends Component {
                 {console.log("this is sellerl", sellerListings)}
                 {console.log("this is user l", userListings)}
                 <Container>
-                    <CardDeck>
+                    <CardColumns>
                         {userListings.map(item =>
 
                            <UserListingCard
@@ -61,7 +61,7 @@ class UserListings extends Component {
                                 history={this.props.history}
                            />
                         )}
-                    </CardDeck>
+                    </CardColumns>
                 </Container>
 
                 End of Listings

@@ -2,7 +2,7 @@ import React from 'react';
 //import {connect} from 'react-redux';
 //import {logout} from '../actions/userActions'
 
-import {Jumbotron, Card} from 'react-bootstrap'
+import {Jumbotron, Card, Carousel} from 'react-bootstrap'
 
 
 
@@ -27,15 +27,25 @@ const ListingShow = ({listingToShow}) => {
             <Card.Img variant="top" src="https://cdn.shopify.com/s/files/1/2440/7149/products/Solid_Blue-Gray_600x.jpg?v=1579880598" 
                     style={ {width: '70%', height: '12rem', objectFit: 'cover', position: 'relative', margin:'auto'} }
                 />
-
+          <Carousel
+            style={ {color: '#20c997'} }
+          >
             {listingAttrs.photos.length > 0 &&
             
                 listingAttrs.photos.map(photo => { return (
-                    <Card.Img variant="top" src={photo.url} 
-                      style={ {width: '100%', height: '100%', objectFit: 'cover'} }
-                    />)
+
+                  
+                    <Carousel.Item>
+                    <img variant="top" src={photo.url} 
+                    style={ {width: '70%', height: '20rem', objectFit: 'contain', position: 'relative', margin:'auto'} }
+                    />
+                    </Carousel.Item>
+                  
+                    )
                   })
             }
+
+          </Carousel> 
 
 
             <Card.Body
