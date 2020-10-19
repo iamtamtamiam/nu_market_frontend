@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-//import {createRequest} from '../actions/listingsActions'
 
 import Button from 'react-bootstrap/Button'
 import ListingCard from './ListingCard';
@@ -13,36 +12,18 @@ class Search extends React.Component {
 
 
 state = {
-    //item: this.props.listingToEdit ? this.props.listingToEdit.attributes.item : "",
     searchTerm: "",
-    //itemsToRender: this.props.allListings
     itemsToRender: ""
   }
  
  
-// baseState = this.state
 
-//seller_id: this.props.userID,
   
  
 handleInputChange = event => {
-    //const {name, value} = event.target
-    // const loginFormInfo = {
-    //     ...props.loginForm,
-    //     [name]: value
-    // }
-   
-
+    
     const refinedItems = this.props.allListings.filter(listing => listing.attributes.item.includes(event.target.value.toLowerCase()))
-    //props.fillLoginForm(loginFormInfo)
-    //console.log(this.state)
-    console.log(refinedItems)
-
-    // this.setState({
-    //     ...this.state,
-    //     [name]: value
-    // })
-
+    
     this.setState({
         searchTerm: event.target.value,
         itemsToRender: refinedItems
@@ -93,18 +74,12 @@ renderingItems = () => {
 
  
   render() {
-
-    
-    
-    
-   
-
     return (
         <div>
         
         <Jumbotron 
                     style={ {width: '100%', objectFit: 'cover', textAlign: 'center', backgroundColor: '#5982ab'} }>
-                        <img src="https://i.ibb.co/5W97v0s/output-onlinepngtools.png"
+                        <img src="https://i.ibb.co/5W97v0s/output-onlinepngtools.png" alt ="nu_logo"
                             style={ {width: '20%', height: '20%'}}
                         ></img>
                         
@@ -130,11 +105,7 @@ renderingItems = () => {
            {this.renderingItems()}
           </CardColumns>
         </Container>  
-      
-
-      {console.log(this.state)}
-      
-
+    
       </div>
     )
   }
