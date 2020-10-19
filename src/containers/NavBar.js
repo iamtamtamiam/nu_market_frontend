@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-//import {logout} from '../actions/userActions'
 import LoginForm from '../components/LoginForm'
 import LogOut from "../components/LogOut"
 import {Link} from 'react-router-dom'
@@ -48,16 +47,14 @@ const NavBar = ({ currentUser }) => {
   } else {
 
 
-    // {currentUser ? `welcome, ${currentUser.attributes.username}` : "not logged in"}
-    //{currentUser ? <LogOut/> : <LoginForm/>}
+   
     return (
         <div>
           <Navbar bg="light" variant="light" 
             style={ {justifyContent: 'center' } }
           >
-            <Nav className="mr-auto" className="justify-content-center" >
-              
-              
+            <Nav className="justify-content-center" >
+               
 
                 <Nav.Item style={{padding: "3px"}}><Link exact="true" to={`/`}>Home</Link></Nav.Item>
                 <Nav.Item style={{padding: "3px"}}><Link exact="true" to={`/users/${currentUser.id}/listings`}>My Listings</Link></Nav.Item>
@@ -79,7 +76,7 @@ const NavBar = ({ currentUser }) => {
 
 const mapStateToProps = ({ currentUser }) => {
     return {
-      //currentUser: state.currentUser
+      
       currentUser
     }
   }

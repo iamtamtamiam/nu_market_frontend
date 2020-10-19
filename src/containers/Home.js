@@ -4,9 +4,7 @@ import AllListings from './AllListings';
 import {Jumbotron} from 'react-bootstrap'
 
 class Home extends Component {
-    //all listings need to be refined into listing cards info
-
-
+    
     render(){
         console.log(this.props)
         return (
@@ -16,7 +14,7 @@ class Home extends Component {
                 <Jumbotron 
                     
                     style={ {width: '100%', objectFit: 'cover', textAlign: 'center', backgroundColor: '#5982ab'} }>
-                        <img src="https://i.ibb.co/5W97v0s/output-onlinepngtools.png"
+                        <img src="https://i.ibb.co/5W97v0s/output-onlinepngtools.png" alt="nu_logo"
                             style={ {width: '20%', height: '20%'}}
                         ></img>
                         <h1>HOME</h1>
