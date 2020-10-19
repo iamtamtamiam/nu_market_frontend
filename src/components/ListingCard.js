@@ -4,7 +4,7 @@ import React from 'react';
 
 import {Link} from 'react-router-dom';
 
-import {Card} from 'react-bootstrap'
+import {Card, Accordion} from 'react-bootstrap'
 
 import RequestForm from './RequestForm'
 
@@ -84,7 +84,17 @@ const ListingCard = (props) => {
                 </Card.Body>
                 <Card.Footer>
 
-                    {(props.currentUser.id === props.listing.relationships.seller.data.id) ? "you are the seller" : <RequestForm {...props}/> }
+                    {(props.currentUser.id === props.listing.relationships.seller.data.id) ? "you are the seller" : 
+                        <Accordion >
+                            <Accordion.Toggle as={Card.Header} eventKey="0">
+                                Click Here to Send a Request!
+                            </Accordion.Toggle>
+                            <Accordion.Collapse eventKey="0">
+                                <RequestForm {...props}/>
+                            </Accordion.Collapse>
+                        </Accordion> 
+                         }
+
                 </Card.Footer>
             </Card>
 
