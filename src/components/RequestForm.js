@@ -11,40 +11,27 @@ class RequestForm extends React.Component {
 
 
 state = {
-    //item: this.props.listingToEdit ? this.props.listingToEdit.attributes.item : "",
     name: "",
     phone: "",
     message:"",
   }
  
  
-// baseState = this.state
 
-//seller_id: this.props.userID,
   
  
   handleInputChange = event => {
     const {name, value} = event.target
-    // const loginFormInfo = {
-    //     ...props.loginForm,
-    //     [name]: value
-    // }
+   
     this.setState({
         ...this.state,
         [name]: value
     })
-    //props.fillLoginForm(loginFormInfo)
-    //console.log(this.state)
+    
     }
 
 
-    // handleSubmit = event => {
-    //     event.preventDefault()
-    //     console.log("made it to handle submit!")
-    //     this.props.createListing({...this.state, seller_id: this.props.userID,}, this.props.history)
-    //     this.setState(this.initialState)
-    // }
-
+    
 
  
   render() {
@@ -57,9 +44,9 @@ state = {
     
       <form onSubmit={event => {
           event.preventDefault()
-          //this.props.handleSubmit(this.state, this.props.userID)
+         
           console.log("inside handle requestform")
-          //might need history
+          
           this.props.createRequest({...this.state, buyer_id: this.props.currentUser.id, listing_id: this.props.listing.id}, this.props.history)
       }}>
 
