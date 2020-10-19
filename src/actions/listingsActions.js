@@ -64,7 +64,7 @@ export const getAllListings = () => {
         })
         .then(resp => resp.json())
         .then(json => {
-            console.log("getting all listings", json.data)
+            //console.log("getting all listings", json.data)
             dispatch(setAllListings(json.data))
         })
         .catch(console.log)
@@ -76,10 +76,9 @@ export const getAllListings = () => {
 
 export const createListing = (listingData, history) => {
     //make sure to set loginData object
-    console.log("listing data is", listingData)
+    //console.log("listing data is", listingData)
     return (dispatch) => {
-        //can take out next line?
-        //dispatch({type: 'LOGIN'})
+        
         return fetch('http://localhost:3001/listings', {
             credentials: "include",
             method: "POST",
@@ -97,7 +96,7 @@ export const createListing = (listingData, history) => {
                 alert(listingJson.status)
             }
             else {
-                console.log("made it here")
+            
                 dispatch(addListing(listingJson.data))
                 //dispatch(resetingLoginForm())
                 history.push(`/listings/${listingJson.data.id}`)
@@ -111,7 +110,7 @@ export const createListing = (listingData, history) => {
 
 
 export const updateListing = (listingData, history) => {
-    //make sure to set loginData object
+   
     const sendableListingData = {
         item: listingData.item,
         description: listingData.description,
@@ -121,8 +120,8 @@ export const updateListing = (listingData, history) => {
         zipcode: listingData.zipcode
         
     }
-    console.log("update listing data is", sendableListingData)
-    //debugger
+    //console.log("update listing data is", sendableListingData)
+    
     return (dispatch) => {
         return fetch(`http://localhost:3001/listings/${listingData.listingID}`, {
             credentials: "include",
@@ -141,10 +140,8 @@ export const updateListing = (listingData, history) => {
                 alert(listingJson.status)
             }
             else {
-                console.log("made it here in update patch")
-                console.log(listingJson)
+                
                 dispatch(updateListingSuccess(listingJson.data))
-                //dispatch(resetingLoginForm())
                 history.push(`/listings/${listingJson.data.id}`)
                 
             }
@@ -158,10 +155,7 @@ export const updateListing = (listingData, history) => {
 
 
 export const deleteListing = (listingID, history) => {
-    //make sure to set loginData object
-    
-   
-    //debugger
+
     return (dispatch) => {
         return fetch(`http://localhost:3001/listings/${listingID}`, {
             credentials: "include",
@@ -184,10 +178,6 @@ export const deleteListing = (listingID, history) => {
                     type: "DELETE_LISTING",
                     listingID
                   })
-
-                //dispatch(resetingLoginForm())
-                
-                //history.replace(`/`)
                 history.push(`/`)           
         
         })
@@ -199,11 +189,10 @@ export const deleteListing = (listingID, history) => {
 
 
 export const createRequest = (requestData, history) => {
-    //make sure to set loginData object
-    console.log("request data is", requestData)
+    
+    //console.log("request data is", requestData)
     return (dispatch) => {
-        //can take out next line?
-        //dispatch({type: 'LOGIN'})
+        
         return fetch('http://localhost:3001/requests', {
             credentials: "include",
             method: "POST",
@@ -221,9 +210,8 @@ export const createRequest = (requestData, history) => {
                 alert(requestJson.status)
             }
             else {
-                console.log("made it here in added request")
+                //console.log("made it here in added request")
                 dispatch(addRequest(requestJson.data))
-                //dispatch(resetingLoginForm())
                 history.push(`/`)
             }
         })
@@ -235,11 +223,9 @@ export const createRequest = (requestData, history) => {
 
 
 export const createPhoto = (photoData, history) => {
-    //make sure to set loginData object
-    console.log("photo data is", photoData)
+    //console.log("photo data is", photoData)
     return (dispatch) => {
-        //can take out next line?
-        //dispatch({type: 'LOGIN'})
+        
         return fetch('http://localhost:3001/photos', {
             credentials: "include",
             method: "POST",
@@ -252,19 +238,15 @@ export const createPhoto = (photoData, history) => {
         })
         .then(resp => resp.json())
         .then(photoJson => {
-            console.log(photoJson)
             if (photoJson.status){
                 alert(photoJson.status)
             }
             else {
-                console.log("made it here in added photo")
                 dispatch(addPhoto(photoJson.data))
-                //dispatch(resetingLoginForm())
                 history.push(`/listings/${photoData.listing_id}`)
             }
         })
         .catch(console.log())
-
 
     }
 }
