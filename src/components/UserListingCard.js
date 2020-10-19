@@ -55,9 +55,9 @@ const UserListingCard = (props) => {
                     
                 </Card.Body>
                 <Card.Footer>
-                    <p>requests: {attributesObj.requests.length}</p>
+                    
                     <Link exact="true" to={`/listings/${props.listingId}/requests`}>requests: {attributesObj.requests.length}</Link>
-                    <small className="text-muted">Buyer: {props.listingBuyer.data ? props.listingBuyer.data.id : "no buyer" }</small><br></br>
+                    <br></br>
                     {(props.currentUser.id === props.listingSeller.data.id) ? (<Link to={`/listings/${props.listingId}/edit`}>Edit this listing</Link>) : "I am NOT seller" }
                 </Card.Footer>
             </Card>
@@ -69,6 +69,6 @@ const UserListingCard = (props) => {
 
 }
 
-
+//<small className="text-muted">Buyer: {props.listingBuyer.data ? props.listingBuyer.data.id : "no buyer" }</small><br></br>
 
 export default (UserListingCard)

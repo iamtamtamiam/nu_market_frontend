@@ -37,7 +37,7 @@ const LoginForm = (props) => {
             </input>
             <label>Password</label>
             <input 
-                type="text" 
+                type="password" 
                 value={props.loginForm.password}
                 name="password"
                 onChange={handleInputChange}

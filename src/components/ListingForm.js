@@ -56,8 +56,7 @@ state = {
 
     return (
         <div>
-        This is the Listing form!
-
+        Add a New Listing!
         
         
       <form onSubmit={event => {
@@ -69,18 +68,23 @@ state = {
 
         <label>Item</label>
             <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().item} name="item"/>
+        <br></br>
         <label>Price</label>
             <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().price} name="price" />
+            <br></br>
         <label>Description</label>
             <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().description} name="description"/>
-        <label>Condition - may want to change!!</label>
+            <br></br>
+        <label>Condition</label>
             <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().condition} name="condition"/>
-        <label>Contact - may want to remove!!</label>
+            <br></br>
+        <label>Contact</label>
             <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().contact} name="contact"/> 
-        <label>Zipcode - may want to remove!!</label>
+            <br></br>
+        <label>Zipcode</label>
             <input type="text" onChange={event => this.handleInputChange(event)} defaultValue={this.valueType().zipcode} name="zipcode"/>
 
-      
+            <br></br>
 
         
         <Button variant="info" type="submit">{this.props.editMode ? "Update This Listing" : "Create New Listing!"} </Button> 
