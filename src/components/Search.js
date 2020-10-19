@@ -42,7 +42,7 @@ renderingItems = () => {
   if (this.state.itemsToRender === ""){
     return (
       this.props.allListings.map(listing => {
-        console.log(listing)
+        
         return(
             <ListingCard
                 currentUser={this.props.currentUser}

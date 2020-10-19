@@ -205,13 +205,15 @@ export const createRequest = (requestData, history) => {
         })
         .then(resp => resp.json())
         .then(requestJson => {
-            console.log(requestJson)
+            //console.log(requestJson)
             if (requestJson.status){
-                alert(requestJson.status)
+                //alert(requestJson.status)
+                alert("You must be logged in. Please login or sign up")
             }
             else {
                 //console.log("made it here in added request")
                 dispatch(addRequest(requestJson.data))
+                alert("Request Sent!")
                 history.push(`/`)
             }
         })
