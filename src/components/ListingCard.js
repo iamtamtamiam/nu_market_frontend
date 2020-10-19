@@ -73,13 +73,17 @@ const ListingCard = (props) => {
 
             }
 
-                  
+            <Card.Img variant="top" src="https://cdn.shopify.com/s/files/1/2440/7149/products/Solid_Blue-Gray_600x.jpg?v=1579880598" 
+                    style={ {width: '100%', height: '5px', objectFit: 'fill'} }
+                />      
                  
-                <Card.Body>
-                    <Card.Title><Link key={props.listing.id}  to={`/listings/${props.listing.id}`}>{listingAttr.item}</Link></Card.Title>
+                <Card.Body
+                    
+                >
+                    <Card.Title><Link key={props.listing.id}  to={`/listings/${props.listing.id}`}><h2>{listingAttr.item}</h2></Link></Card.Title>
                     <Card.Text>
-                        <p>{listingAttr.price} - {listingAttr.condition}</p>
-                        <p>{listingAttr.zipcode}</p>
+                        ${listingAttr.price} - {listingAttr.condition}<br></br>
+                        {listingAttr.zipcode}
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer>

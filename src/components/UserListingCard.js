@@ -82,10 +82,12 @@ const UserListingCard = (props) => {
 
             </Carousel> 
 
-       
+                <Card.Img variant="top" src="https://cdn.shopify.com/s/files/1/2440/7149/products/Solid_Blue-Gray_600x.jpg?v=1579880598" 
+                    style={ {width: '100%', height: '5px', objectFit: 'fill'} }
+                />      
 
                 <Card.Body>
-                    <Card.Title>{attributesObj.item} this will be an indiviudal listing of a User</Card.Title>
+                    <Card.Title>{attributesObj.item} </Card.Title>
                     <Card.Text>
                         <ul>
                             <li>price: {attributesObj.price}</li>
