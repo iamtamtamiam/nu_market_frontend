@@ -5,6 +5,7 @@ import {Link} from 'react-router-dom';
 import {Card, Accordion} from 'react-bootstrap'
 
 import RequestForm from './RequestForm'
+// import LikeForm from './LikeForm'
 
 const ListingCard = (props) => {
    
@@ -37,6 +38,9 @@ const ListingCard = (props) => {
                         ${listingAttr.price} - {listingAttr.condition}<br></br>
                         {listingAttr.zipcode}
                     </Card.Text>
+
+                {/*   <LikeForm/> */}
+                    
                 </Card.Body>
                 <Card.Footer>
 

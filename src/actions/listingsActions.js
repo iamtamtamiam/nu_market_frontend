@@ -94,13 +94,14 @@ export const createListing = (listingData, history) => {
             console.log(listingJson)
             if (listingJson.status){
                 alert(listingJson.status)
+                return 
             }
-            else {
+           
             
                 dispatch(addListing(listingJson.data))
                 //dispatch(resetingLoginForm())
                 history.push(`/listings/${listingJson.data.id}`)
-            }
+            
         })
         .catch(console.log())
 
@@ -117,6 +118,7 @@ export const updateListing = (listingData, history) => {
         price: listingData.price,
         condition: listingData.condition,
         status: listingData.status,
+        contact: listingData.contact, 
         zipcode: listingData.zipcode
         
     }
