@@ -20,7 +20,7 @@ import ListingNew from './containers/ListingNew';
 import Requests from './containers/Requests'
 import Search from './components/Search'
 
-
+import ZipCodeForm from './components/ZipCodeForm'
 
 class App extends React.Component{
   componentDidMount(){
@@ -33,6 +33,8 @@ class App extends React.Component{
           
           <NavBar location={this.props.location}/>
             
+          <ZipCodeForm/>
+
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/users/:id/listings" component={UserListings} />
