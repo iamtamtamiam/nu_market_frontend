@@ -93,7 +93,13 @@ export const createListing = (listingData, history) => {
         .then(listingJson => {
             console.log(listingJson)
             if (listingJson.status){
-                alert(listingJson.status)
+                //alert(listingJson.status)
+                //let errors = listingJson.main.entries()
+                console.log(listingJson.main)
+                for (const [key, value] of Object.entries(listingJson.main)) {
+                    alert(`${key}: ${value}`);
+                  }    
+                //alert(errors)
                 return 
             }
            

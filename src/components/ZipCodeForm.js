@@ -4,6 +4,9 @@ import Form from 'react-bootstrap/Form';
 
 class ZipCodeForm extends React.Component {
 
+
+
+
     render(){
         return(
         <Form>
@@ -12,7 +15,6 @@ class ZipCodeForm extends React.Component {
             id="custom-switch"
             label="Check this switch"
           />
-
         </Form>
         )
     }
