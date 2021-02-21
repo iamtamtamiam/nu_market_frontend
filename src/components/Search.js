@@ -82,6 +82,10 @@ renderZipForm = () => {
       <form>
         <label>Enter ZipCode: </label>
           <input type="text"   name="zipcode" placeholder="function not complete"/>
+        &nbsp;&nbsp;
+        <label>Radius: </label>
+          <input type="text"   name="radius" placeholder="function not complete"/>
+          <Button variant="info" type="submit">Search </Button> 
       </form>
      
     )
@@ -98,6 +102,12 @@ handleButtonChange = event => {
   
 }
 
+handleButtonSubmit = event => {
+  event.preventDefault()
+  //send zip to back and get array of close zips
+}
+
+
 
  
   render() {
@@ -113,22 +123,23 @@ handleButtonChange = event => {
                         <h1>Search</h1>
                 </Jumbotron>
 
+          <Form >
+              <Form.Check 
+                type="switch"
+                id="custom-switch"
+                label="Check this switch"
+                onChange={this.handleButtonChange}
+              />
+
+              {this.renderZipForm()}
+
+          </Form>
     
       <form onSubmit={this.handleSubmit}
          style={ {textAlign: 'left'} }
       >
 
-      <Form>
-          <Form.Check 
-            type="switch"
-            id="custom-switch"
-            label="Check this switch"
-            onChange={this.handleButtonChange}
-          />
-
-          {this.renderZipForm()}
-
-      </Form>
+      
           
 
         <label>Enter Search Term:</label>
