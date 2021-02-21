@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Button from 'react-bootstrap/Button'
 import ListingCard from './ListingCard';
 import { Container, CardColumns, Jumbotron } from 'react-bootstrap'
-
+import Form from 'react-bootstrap/Form';
  
 class Search extends React.Component {
 
@@ -13,7 +13,8 @@ class Search extends React.Component {
 
 state = {
     searchTerm: "",
-    itemsToRender: ""
+    itemsToRender: "",
+    formChecked: false
   }
  
  
@@ -36,6 +37,8 @@ handleInputChange = event => {
  handleSubmit = event => {
      event.preventDefault() 
  }
+
+
 
 
 renderingItems = () => {
@@ -72,6 +75,30 @@ renderingItems = () => {
 
 
 
+renderZipForm = () => {
+  if (this.state.formChecked === true){
+    return(
+     //either move form at bottom or take away form here
+      <form>
+        <label>Enter ZipCode: </label>
+          <input type="text"   name="zipcode" placeholder="function not complete"/>
+      </form>
+     
+    )
+  }
+}
+
+handleButtonChange = event => {
+  console.log("in handle change for switch")
+  //console.log(event.target.checked)
+    this.setState({
+      ...this.state,
+      formChecked: event.target.checked
+    })
+  
+}
+
+
  
   render() {
     return (
@@ -88,9 +115,20 @@ renderingItems = () => {
 
     
       <form onSubmit={this.handleSubmit}
-         style={ {textAlign: 'center'} }
+         style={ {textAlign: 'left'} }
       >
 
+      <Form>
+          <Form.Check 
+            type="switch"
+            id="custom-switch"
+            label="Check this switch"
+            onChange={this.handleButtonChange}
+          />
+
+          {this.renderZipForm()}
+
+      </Form>
           
 
         <label>Enter Search Term:</label>
@@ -98,6 +136,8 @@ renderingItems = () => {
         
             <Button variant="info" type="submit">Search </Button> 
       </form>
+
+
 
 
       <Container>

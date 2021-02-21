@@ -33,7 +33,7 @@ class App extends React.Component{
           
           <NavBar location={this.props.location}/>
             
-          <ZipCodeForm/>
+          
 
           <Switch>
             <Route exact path="/" component={Home} />
