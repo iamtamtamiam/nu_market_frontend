@@ -79,13 +79,13 @@ renderZipForm = () => {
   if (this.state.formChecked === true){
     return(
      //either move form at bottom or take away form here
-      <form>
+      <form onSubmit={event => this.handleButtonSubmit(event)}>
         <label>Enter ZipCode: </label>
           <input type="text"   name="zipcode" placeholder="function not complete"/>
         &nbsp;&nbsp;
         <label>Radius: </label>
           <input type="text"   name="radius" placeholder="function not complete"/>
-          <Button variant="info" type="submit">Search </Button> 
+          <Button variant="info" type="submit">Refine Search </Button> 
       </form>
      
     )
@@ -105,6 +105,29 @@ handleButtonChange = event => {
 handleButtonSubmit = event => {
   event.preventDefault()
   //send zip to back and get array of close zips
+  console.log("in zipcode submit")
+  console.log(event)
+  let zipdata = {zipcode: event.target.value.zipcode, radius: event.target.value.radius}
+  return fetch('http://localhost:3001/zipcodes', {
+            credentials: "include",
+            method: "POST",
+            headers: {
+                
+                "Content-Type": "application/json",
+                "Accept": "application/json" 
+            },
+            body: JSON.stringify(zipdata)
+        })
+        .then(resp => resp.json())
+        .then(zipJson => {
+            console.log(zipJson)
+            if (zipJson.results.error){
+                alert("something wrong in zipcode")
+            }
+        })
+        .catch(console.log())
+
+  
 }
 
 
