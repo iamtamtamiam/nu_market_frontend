@@ -14,7 +14,9 @@ class Search extends React.Component {
 state = {
     searchTerm: "",
     itemsToRender: "",
-    formChecked: false
+    formChecked: false,
+    zipcode: "",
+    radius: ""
   }
  
  
@@ -81,10 +83,14 @@ renderZipForm = () => {
      //either move form at bottom or take away form here
       <form onSubmit={event => this.handleButtonSubmit(event)}>
         <label>Enter ZipCode: </label>
-          <input type="text"   name="zipcode" placeholder="function not complete"/>
+          <input type="text"   name="zipcode" placeholder="function not complete"
+          onChange={event => this.handleInputZip(event)} value={this.state.zipcode}
+          />
         &nbsp;&nbsp;
         <label>Radius: </label>
-          <input type="text"   name="radius" placeholder="function not complete"/>
+          <input type="text"   name="radius" placeholder="function not complete"
+          onChange={event => this.handleInputZip(event)} value={this.state.radius}
+          />
           <Button variant="info" type="submit">Refine Search </Button> 
       </form>
      
@@ -101,6 +107,20 @@ handleButtonChange = event => {
     })
   
 }
+
+
+handleInputChangeZip = event => {
+  
+  const {name, value} = event.target 
+  
+  this.setState({
+    ...this.state,
+    [name]: value
+})
+
+}
+
+
 
 handleButtonSubmit = event => {
   event.preventDefault()
