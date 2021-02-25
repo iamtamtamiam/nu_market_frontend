@@ -109,14 +109,16 @@ handleButtonChange = event => {
 }
 
 
-handleInputChangeZip = event => {
+handleInputZip = event => {
   
   const {name, value} = event.target 
   
   this.setState({
     ...this.state,
     [name]: value
-})
+    
+  })
+  
 
 }
 
@@ -126,21 +128,22 @@ handleButtonSubmit = event => {
   event.preventDefault()
   //send zip to back and get array of close zips
   console.log("in zipcode submit")
-  console.log(event)
-  let zipdata = {zipcode: event.target.value.zipcode, radius: event.target.value.radius}
-  return fetch('http://localhost:3001/zipcodes', {
+  //console.log(event)
+  //let zipdata = {zipcode: this.state.zipcode, radius: this.state.radius}
+  return fetch(`http://localhost:3001/zipcodes/${this.state.zipcode}/${this.state.radius}`, {
             credentials: "include",
-            method: "POST",
+            method: "GET",
             headers: {
                 
                 "Content-Type": "application/json",
                 "Accept": "application/json" 
             },
-            body: JSON.stringify(zipdata)
+            
         })
         .then(resp => resp.json())
         .then(zipJson => {
             console.log(zipJson)
+            //results array, get city name and distance
             if (zipJson.results.error){
                 alert("something wrong in zipcode")
             }
@@ -175,7 +178,7 @@ handleButtonSubmit = event => {
               />
 
               {this.renderZipForm()}
-
+              {console.log(this.state)}
           </Form>
     
       <form onSubmit={this.handleSubmit}
