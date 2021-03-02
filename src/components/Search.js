@@ -144,6 +144,13 @@ handleButtonSubmit = event => {
         .then(zipJson => {
             console.log(zipJson)
             //results array, get city name and distance
+            
+            let zipcodesFound = zipJson.results.map(item => item.zip)
+            
+            console.log(this.state.itemsToRender)
+            let zipRefinedItems = this.state.itemsToRender.filter(element => zipcodesFound.includes(element.attributes.zipcode.toString()) )
+            console.log(zipRefinedItems)
+            debugger
             if (zipJson.results.error){
                 alert("something wrong in zipcode")
             }
