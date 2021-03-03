@@ -150,7 +150,11 @@ handleButtonSubmit = event => {
             console.log(this.state.itemsToRender)
             let zipRefinedItems = this.state.itemsToRender.filter(element => zipcodesFound.includes(element.attributes.zipcode.toString()) )
             console.log(zipRefinedItems)
-            debugger
+            this.setState({
+              ...this.state,
+              itemsToRender: zipRefinedItems
+            })
+
             if (zipJson.results.error){
                 alert("something wrong in zipcode")
             }
